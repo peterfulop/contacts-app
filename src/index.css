@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* GREY COLORS */
+  --G100: #141414;
+  --G90: #191919;
+  --G80: #1e1e1e;
+  --G70: #232323;
+  --G60: #282828;
+  --G50: #2d2d2d;
+  --G40: #323232;
+  --G30: #373737;
+  --G20: #3c3c3c;
+  --G10: #414141;
+
+  /* TEXT */
+  --text-primary: white;
+  --text-secondary: rgba(255, 255, 255, 0.561);
+  --text-disabled: rgba(255, 255, 255, 0.322);
+}
