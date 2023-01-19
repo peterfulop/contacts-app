@@ -1,7 +1,26 @@
+@font-face {
+  font-family: 'Glysa';
+  src: local('Glysa'), url('./fonts/Glysa/Glysa.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Lexend Deca';
+  src: local('Lexend Deca'),
+    url('./fonts/LexendDeca/LexendDeca-VariableFont_wght.ttf')
+      format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lexend Deca';
+  font-weight: 'regular';
+  font-size: '14px';
+  line-height: '20px';
+  letter-spacing: '1%';
 }
 
 :root {
@@ -19,6 +38,6 @@
 
   /* TEXT */
   --text-primary: white;
-  --text-secondary: rgba(255, 255, 255, 0.561);
-  --text-disabled: rgba(255, 255, 255, 0.322);
+  --text-secondary: #ffffff8f;
+  --text-disabled: #ffffff52;
 }
