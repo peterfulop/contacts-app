@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ThemeType } from '../../../theme/theme';
+import { Icon } from '../icon-item/icon-item';
 
 export const Layout = styled('section')((props: { theme: ThemeType }) => ({
   display: 'flex',
@@ -11,22 +12,26 @@ export const Layout = styled('section')((props: { theme: ThemeType }) => ({
 
 export const SideBar = styled('div')((props: { theme: ThemeType }) => ({
   border: '1px solid gray',
+  marginTop: '96px',
 }));
 
 export const Main = styled('div')((props: { theme: ThemeType }) => ({
   width: props.theme.mainLayout.width,
   justifyContent: 'center',
   alignItems: 'center',
-  height: '100vh',
+  marginTop: '96px',
 }));
 
 export const MainLayout = () => {
   return (
     <Layout>
       <SideBar>
-        <p>back</p>
+        <Icon icon={'Add'} />
       </SideBar>
-      <Main>CONTENT HERE</Main>
+      <Main>
+        <header>HEADSER</header>
+        <main>main....</main>
+      </Main>
       <SideBar>
         <p>settings</p>
       </SideBar>
