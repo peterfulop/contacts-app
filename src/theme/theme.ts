@@ -1,6 +1,6 @@
 export const theme = {
   mainLayout: {
-    width: 768,
+    width: '768px',
   },
   colors: {
     G100: '#141414',
@@ -20,28 +20,28 @@ export const theme = {
   typography: {
     H1: {
       fontFamily: 'Glysa',
-      fontWeight: 'normal',
+      fontStyle: 'normal',
       fontSize: '32px',
       lineHeight: '48px',
       letterSpacing: '0%',
     },
     H2: {
       fontFamily: 'Glysa',
-      fontWeight: 'normal',
+      fontStyle: 'normal',
       fontSize: '24px',
       lineHeight: '40px',
       letterSpacing: '0%',
     },
     H3: {
       fontFamily: 'Lexend Deca',
-      fontWeight: 'regular',
+      fontStyle: 'regular',
       fontSize: '16px',
       lineHeight: '24px',
       letterSpacing: '1%',
     },
     message: {
       fontFamily: 'Lexend Deca',
-      fontWeight: 'regular',
+      fontStyle: 'regular',
       fontSize: '12px',
       lineHeight: '12px',
       letterSpacing: '1%',

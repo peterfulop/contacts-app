@@ -12,14 +12,6 @@ export const MyHeader = styled('header')((props: { theme: ThemeType }) => ({
     ...props.theme.typography.H1,
     color: props.theme.colors.textPrimary,
   },
-  h2: {
-    ...props.theme.typography.H2,
-    color: props.theme.colors.textPrimary,
-  },
-  h3: {
-    ...props.theme.typography.H3,
-    color: props.theme.colors.textPrimary,
-  },
 }));
 
 export const Header = () => {
