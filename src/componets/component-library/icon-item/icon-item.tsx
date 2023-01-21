@@ -5,7 +5,6 @@ export const Icon = (props: {
   width?: string | number;
   height?: string | number;
   color?: string;
-
   img?: React.HTMLAttributes<HTMLImageElement>;
 }) => {
   return (

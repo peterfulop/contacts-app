@@ -1,7 +1,4 @@
 export const theme = {
-  mainLayout: {
-    width: '768px',
-  },
   colors: {
     G100: '#141414',
     G90: '#191919',
@@ -13,6 +10,7 @@ export const theme = {
     G30: '#373737',
     G20: '#3c3c3c',
     G10: '#414141',
+    G00: '#19191900',
     textPrimary: 'white',
     textSecondary: '#ffffff8f',
     textDisabled: '#ffffff52',
@@ -21,9 +19,11 @@ export const theme = {
     H1: {
       fontFamily: 'Glysa',
       fontStyle: 'normal',
+      fontWeight: '500',
       fontSize: '32px',
       lineHeight: '48px',
       letterSpacing: '0%',
+      textTransform: 'capitalize',
     },
     H2: {
       fontFamily: 'Glysa',
