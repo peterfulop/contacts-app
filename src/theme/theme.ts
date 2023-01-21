@@ -41,9 +41,9 @@ export const theme = {
     },
     message: {
       fontFamily: 'Lexend Deca',
-      fontStyle: 'regular',
+      fontStyle: 'normal',
       fontSize: '12px',
-      lineHeight: '12px',
+      lineHeight: '16px',
       letterSpacing: '1%',
     },
   },

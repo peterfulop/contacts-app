@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Avatar from '../../assets/avatars/Photo.png';
 import { TEXT, t } from '../../text';
 import { Button } from '../component-library/button/button';
+import { ContactList } from '../component-library/contacts/contact-list';
 import { Icon } from '../component-library/icon-item/icon-item';
 
 export const Navbar = styled('header')({
@@ -49,10 +51,49 @@ export const Content = styled('main')({
   margin: '0 auto',
   display: 'flex',
   width: '100%',
-  padding: '24px',
+  padding: '12px 24px',
 });
 
+export type Contact = {
+  name: string;
+  phone: string;
+  avatar: string;
+};
+
 export const Contacts = () => {
+  const [contacts, setContacts] = useState<Contact[] | null>();
+
+  useEffect(() => {
+    const data = [
+      {
+        name: 'Timothy Lewis',
+        phone: '+36 01 234 5678',
+        avatar: 'src/assets/avatars/Timothy.png',
+      },
+      {
+        name: 'Sarah Wright',
+        phone: '+36 01 234 5678',
+        avatar: 'src/assets/avatars/Sarah.png',
+      },
+      {
+        name: 'Lucy Jones',
+        phone: '+36 01 234 5678',
+        avatar: 'src/assets/avatars/Lucy.png',
+      },
+      {
+        name: 'Jake Perez',
+        phone: '+36 01 234 5678',
+        avatar: 'src/assets/avatars/Jake.png',
+      },
+      {
+        name: 'Adebayo Rodriguez',
+        phone: '+36 01 234 5678',
+        avatar: 'src/assets/avatars/Adebayo.png',
+      },
+    ];
+    setContacts(data);
+  }, []);
+
   return (
     <>
       <Navbar>
@@ -76,7 +117,13 @@ export const Contacts = () => {
           <Icon icon={'LightMode'} />
         </NavbarSide>
       </Navbar>
-      <Content>main....</Content>
+      <Content>
+        {contacts ? (
+          <ContactList contacts={contacts} />
+        ) : (
+          <div>no contacts yet...</div>
+        )}
+      </Content>
     </>
   );
 };
