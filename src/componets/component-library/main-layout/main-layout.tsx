@@ -1,6 +1,6 @@
 import styled from '../../../theme/styled';
 
-export const Body = styled('section')(({ theme }) => ({
+const Body = styled('section')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   backgroundColor: theme.colors.G100,
@@ -8,7 +8,7 @@ export const Body = styled('section')(({ theme }) => ({
   color: 'white',
 }));
 
-export const Main = styled('div')({
+const Main = styled('div')({
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',

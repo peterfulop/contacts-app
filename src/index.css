@@ -49,3 +49,13 @@ body {
   background-color: var(--G100);
   color: var(--textPrimary);
 }
+
+.active-drop-down {
+  background: var(--G60) !important;
+  border-radius: 8px;
+}
+
+.inactive-drop-down {
+  background: var(--G00) !important;
+  border-radius: 8px;
+}

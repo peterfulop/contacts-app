@@ -1,38 +1,27 @@
 import styled from '../../../theme/styled';
+import { ButtonVariant, Theme } from '../../../types';
 import { Icon } from '../icon-item/icon-item';
 import { IconType } from '../icons';
 
-export enum ButtonVariant {
-  FLAT = 'FLAT',
-  BORDERED = 'BORDERED',
-}
-
-export enum Theme {
-  PRIMARY = 'PRIMARY',
-  SECONDARY = 'SECONDARY',
-}
-
-export enum ButtonState {
-  DEFAULT = 'DEFAULT',
-  ACTIVE = 'ACTIVE',
-  HOVER = 'HOVER',
-}
-
-type ButtonProps = {
+type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   variant: keyof typeof ButtonVariant;
   theme?: keyof typeof Theme;
   label?: string;
   icon?: IconType;
   reverse?: boolean;
-  onClick?: () => void;
+  onClick?: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined
+  ) => any;
 };
 
-const MainButton = styled('div')(({ theme }) => ({
+const MainButton = styled('button')(({ theme }) => ({
   fontWeight: '400',
   fontSize: '14px',
   cursor: 'pointer',
   height: '40px',
   color: theme.colors.textPrimary,
+  border: 'none',
+  background: 'none',
   p: {
     ':first-letter': { textTransform: 'uppercase' },
   },

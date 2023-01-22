@@ -1,6 +1,5 @@
 export enum Languages {
   ENG = 'ENG',
-  HU = 'HU',
 }
 export type Content = Record<Languages, string>;
 export type Text = {
@@ -13,6 +12,9 @@ export type Text = {
   };
   buttons: {
     addNew: Content;
+    edit: Content;
+    favourite: Content;
+    remove: Content;
   };
 };
 
@@ -20,12 +22,15 @@ export const TEXT: Text = {
   pages: {
     contacts: {
       labels: {
-        title: { ENG: 'contacts', HU: 'kapcsolatok' },
+        title: { ENG: 'contacts' },
       },
     },
   },
   buttons: {
-    addNew: { ENG: 'add new', HU: 'új hozzáadása' },
+    addNew: { ENG: 'add new' },
+    edit: { ENG: 'edit' },
+    favourite: { ENG: 'favourite' },
+    remove: { ENG: 'remove' },
   },
 };
 

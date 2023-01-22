@@ -2,22 +2,10 @@ import { useEffect, useState } from 'react';
 import Avatar from '../../assets/avatars/Photo.png';
 import { TEXT, t } from '../../text';
 import styled from '../../theme/styled';
+import { Contact } from '../../types';
 import { Button } from '../component-library/button/button';
 import { ContactList } from '../component-library/contacts/contact-list';
 import { Icon } from '../component-library/icon-item/icon-item';
-
-export type Contact = {
-  name: string;
-  phone: string;
-  avatar: string;
-};
-
-const HeaderActions = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '1.5rem',
-});
 
 const Header = styled('header')(({ theme }) => ({
   display: 'flex',
@@ -25,8 +13,6 @@ const Header = styled('header')(({ theme }) => ({
   justifyContent: 'space-between',
   padding: '24px',
   height: '96px',
-  border: '1px solid',
-  borderColor: theme.colors.G50,
   h1: {
     ...theme.typography.H1,
     color: theme.colors.textPrimary,
@@ -36,12 +22,22 @@ const Header = styled('header')(({ theme }) => ({
   },
 }));
 
+const HeaderActions = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '1.5rem',
+});
+
 const Main = styled('main')({
   padding: '12px 24px',
 });
 
 const Col = styled('div')({
-  margin: '32px 36px',
+  padding: '24px',
+  height: '96px',
+  display: 'flex',
+  alignItems: 'center',
 });
 
 const Section = styled('section')({

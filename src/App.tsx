@@ -6,7 +6,8 @@ import styled from './theme/styled';
 export const Div = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  paddingTop: '120px',
+  // paddingTop: '120px',
+  paddingTop: '60px',
   justifyContent: 'center',
   width: '100%',
 });
