@@ -9,6 +9,8 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   label?: string;
   icon?: IconType;
   reverse?: boolean;
+  isActive?: boolean;
+  activeColor?: string;
   onClick?: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined
   ) => any;
@@ -87,6 +89,7 @@ const ButtonContent = (props: ButtonProps) => {
     <div
       style={{
         flexDirection: `${!props?.reverse ? 'row' : 'row-reverse'}`,
+        background: `${props?.isActive ? props.activeColor : ''}`,
       }}
     >
       {props.icon && (

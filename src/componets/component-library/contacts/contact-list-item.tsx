@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TEXT, t } from '../../../text';
 import styled from '../../../theme/styled';
+import { theme } from '../../../theme/theme';
 import { Contact } from '../../../types';
 import { Button } from '../button/button';
 import { Icon } from '../icon-item/icon-item';
@@ -98,29 +99,8 @@ const DropdownListItem = styled('div')(({ theme }) => ({
 export const ContactListItem = (props: { contact: Contact }) => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
 
-  const handleOnDropDownMenuClick = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined
-  ) => {
-    if (dropdownMenu) {
-      e?.currentTarget.classList.remove('active-drop-down');
-      setDropdownMenu(false);
-    } else {
-      e?.currentTarget.classList.add('active-drop-down');
-      setDropdownMenu(true);
-    }
-  };
-
-  const hideDropdownMenu = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    const dropdownMenuButton =
-      e.currentTarget.parentElement?.firstElementChild?.lastElementChild;
-    dropdownMenuButton?.classList.remove('active-drop-down');
-    setDropdownMenu(false);
-  };
-
   return (
-    <ContactItem>
+    <ContactItem onMouseLeave={() => setDropdownMenu(false)}>
       <ContactData>
         <Avatar src={props.contact.avatar} />
         <div>
@@ -136,13 +116,15 @@ export const ContactListItem = (props: { contact: Contact }) => {
             icon={'More'}
             variant={'FLAT'}
             theme={'SECONDARY'}
-            onClick={(e) => handleOnDropDownMenuClick(e)}
+            onClick={() => setDropdownMenu((prevState) => !prevState)}
+            isActive={dropdownMenu}
+            activeColor={theme.colors.G60}
           />
         </Buttons>
         {dropdownMenu && (
           <DropdownList
-            onMouseLeave={(e) => {
-              hideDropdownMenu(e);
+            onMouseLeave={() => {
+              setDropdownMenu(false);
             }}
           >
             <DropdownListItem>
