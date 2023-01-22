@@ -30,22 +30,22 @@ const Avatar = styled('img')(({ theme }) => ({
   borderRadius: '20px',
 }));
 
-const ContactData = styled('div')(({ theme }) => ({
+const ContactData = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   gap: '8px',
-}));
+});
 
-const ContactActions = styled('div')(({ theme }) => ({
+const ContactActions = styled('div')({
   visibility: 'hidden',
   position: 'relative',
-}));
+});
 
-const Buttons = styled('div')(({ theme }) => ({
+const Buttons = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   gap: '2px',
-}));
+});
 
 const DropdownList = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -118,7 +118,7 @@ export const ContactListItem = (props: { contact: Contact }) => {
             theme={'SECONDARY'}
             onClick={() => setDropdownMenu((prevState) => !prevState)}
             isActive={dropdownMenu}
-            activeColor={theme.colors.G60}
+            activeColor={theme.colors.G80}
           />
         </Buttons>
         {dropdownMenu && (

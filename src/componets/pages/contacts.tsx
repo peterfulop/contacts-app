@@ -45,7 +45,9 @@ const Section = styled('section')({
   width: '100%',
 });
 
-export const Contacts = () => {
+export const Contacts = (props: {
+  onShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [contacts, setContacts] = useState<Contact[] | null>();
 
   useEffect(() => {
@@ -95,6 +97,7 @@ export const Contacts = () => {
               theme={'PRIMARY'}
               icon={'Add'}
               label={t(TEXT.buttons.addNew)}
+              onClick={() => props.onShowModal(true)}
             />
           </HeaderActions>
         </Header>
