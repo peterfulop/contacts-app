@@ -1,19 +1,21 @@
+const setVar = (code: string) => `var(--${code})`;
+
 export const theme = {
   colors: {
-    G100: '#141414',
-    G90: '#191919',
-    G80: '#1e1e1e',
-    G70: '#232323',
-    G60: '#282828',
-    G50: '#2d2d2d',
-    G40: '#323232',
-    G30: '#373737',
-    G20: '#3c3c3c',
-    G10: '#414141',
-    G00: '#19191900',
-    textPrimary: 'white',
-    textSecondary: '#ffffff8f',
-    textDisabled: '#ffffff52',
+    G100: setVar('G100'),
+    G90: setVar('G90'),
+    G80: setVar('G80'),
+    G70: setVar('G70'),
+    G60: setVar('G60'),
+    G50: setVar('G50'),
+    G40: setVar('G40'),
+    G30: setVar('G30'),
+    G20: setVar('G20'),
+    G10: setVar('G10'),
+    G00: setVar('G00'),
+    textPrimary: setVar('textPrimary'),
+    textSecondary: setVar('textSecondary'),
+    textDisabled: setVar('textDisabled'),
   },
   typography: {
     H1: {

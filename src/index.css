@@ -33,9 +33,19 @@ body {
   --G30: #373737;
   --G20: #3c3c3c;
   --G10: #414141;
+  --G00: '#19191900';
 
   /* TEXT */
-  --text-primary: white;
-  --text-secondary: #ffffff8f;
-  --text-disabled: #ffffff52;
+  --textPrimary: white;
+  --textSecondary: #ffffff8f;
+  --textDisabled: #ffffff52;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--G100);
+  color: var(--textPrimary);
 }
