@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import Avatar from '../../assets/avatars/Photo.png';
-import { TEXT, t } from '../../text';
+import { TEXT, t } from '../../helpers/text';
 import styled from '../../theme/styled';
 import { Contact } from '../../types';
 import { Button } from '../component-library/button/button';
 import { ContactList } from '../component-library/contacts/contact-list';
-import { Icon } from '../component-library/icon-item/icon-item';
+import { Icon } from '../component-library/icon/icon';
 
 const Header = styled('header')(({ theme }) => ({
   display: 'flex',
@@ -60,7 +60,7 @@ export const Contacts = (props: {
       {
         name: 'Sarah Wright',
         phone: '+36 01 234 5678',
-        avatar: 'src/assets/avatars/Sarah.png',
+        avatar: '',
       },
       {
         name: 'Lucy Jones',
@@ -105,7 +105,7 @@ export const Contacts = (props: {
           {contacts ? (
             <ContactList contacts={contacts} />
           ) : (
-            <div>no contacts yet...</div>
+            <div>{t(TEXT.pages.contacts.labels.noContacts)}</div>
           )}
         </Main>
       </Section>

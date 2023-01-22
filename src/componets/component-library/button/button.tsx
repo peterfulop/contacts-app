@@ -1,9 +1,12 @@
 import styled from '../../../theme/styled';
 import { ButtonVariant, Theme } from '../../../types';
-import { Icon } from '../icon-item/icon-item';
+import { Icon } from '../icon/icon';
 import { IconType } from '../icons';
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   variant: keyof typeof ButtonVariant;
   theme?: keyof typeof Theme;
   label?: string;

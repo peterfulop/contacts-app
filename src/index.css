@@ -22,7 +22,7 @@ body {
 }
 
 :root {
-  /* GREY COLORS */
+  /* COLORS */
   --G100: #141414;
   --G90: #191919;
   --G80: #1e1e1e;
@@ -39,6 +39,10 @@ body {
   --textPrimary: white;
   --textSecondary: #ffffff8f;
   --textDisabled: #ffffff52;
+
+  /* FONTS */
+  --glysa: 'Glysa';
+  --lexendDeca: 'Lexend Deca';
 }
 
 #root {

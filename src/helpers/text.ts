@@ -7,6 +7,7 @@ export type Text = {
     contacts: {
       labels: {
         title: Content;
+        noContacts: Content;
       };
     };
   };
@@ -15,6 +16,14 @@ export type Text = {
     edit: Content;
     favourite: Content;
     remove: Content;
+    changePicture: Content;
+    done: Content;
+    cancel: Content;
+  };
+  inputFields: {
+    name: Content;
+    phoneNumber: Content;
+    emailAddress: Content;
   };
 };
 
@@ -23,6 +32,7 @@ export const TEXT: Text = {
     contacts: {
       labels: {
         title: { ENG: 'contacts' },
+        noContacts: { ENG: 'there are no contacts yet...' },
       },
     },
   },
@@ -31,6 +41,14 @@ export const TEXT: Text = {
     edit: { ENG: 'edit' },
     favourite: { ENG: 'favourite' },
     remove: { ENG: 'remove' },
+    done: { ENG: 'done' },
+    cancel: { ENG: 'cancel' },
+    changePicture: { ENG: 'change picture' },
+  },
+  inputFields: {
+    name: { ENG: 'name' },
+    phoneNumber: { ENG: 'phone number' },
+    emailAddress: { ENG: 'email address' },
   },
 };
 

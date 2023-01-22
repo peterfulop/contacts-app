@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { TEXT, t } from '../../../text';
+import NoImage from '../../../assets/avatars/Default.png';
+import { TEXT, t } from '../../../helpers/text';
 import styled from '../../../theme/styled';
 import { theme } from '../../../theme/theme';
 import { Contact } from '../../../types';
 import { Button } from '../button/button';
-import { Icon } from '../icon-item/icon-item';
+import { Icon } from '../icon/icon';
 
 const ContactItem = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -102,7 +103,7 @@ export const ContactListItem = (props: { contact: Contact }) => {
   return (
     <ContactItem onMouseLeave={() => setDropdownMenu(false)}>
       <ContactData>
-        <Avatar src={props.contact.avatar} />
+        <Avatar src={props.contact.avatar || NoImage} />
         <div>
           <h3>{props.contact.name}</h3>
           <p>{props.contact.phone}</p>

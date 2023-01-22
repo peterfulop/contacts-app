@@ -14,7 +14,7 @@ export enum Theme {
   SECONDARY = 'SECONDARY',
 }
 
-export enum ButtonState {
+export enum InputState {
   DEFAULT = 'DEFAULT',
   ACTIVE = 'ACTIVE',
   HOVER = 'HOVER',

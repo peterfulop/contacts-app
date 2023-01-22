@@ -17,6 +17,10 @@ export const theme = {
     textSecondary: setVar('textSecondary'),
     textDisabled: setVar('textDisabled'),
   },
+  fonts: {
+    lexendDeca: setVar('lexendDeca'),
+    glysa: setVar('glysa'),
+  },
   typography: {
     H1: {
       fontFamily: 'Glysa',

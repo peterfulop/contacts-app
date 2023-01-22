@@ -1,5 +1,5 @@
 import styled from '../../../theme/styled';
-import { Contact } from '../../pages/contacts';
+import { Contact } from '../../../types';
 import { ContactListItem } from './contact-list-item';
 
 const List = styled('div')({
