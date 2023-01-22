@@ -14,7 +14,7 @@ export enum ButtonTheme {
 
 export enum ButtonState {
   DEFAULT = 'DEFAULT',
-  PRESSED = 'PRESSED',
+  ACTIVE = 'ACTIVE',
   HOVER = 'HOVER',
 }
 
