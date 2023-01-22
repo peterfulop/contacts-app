@@ -1,5 +1,10 @@
 const setVar = (code: string) => `var(--${code})`;
 
+enum Fonts {
+  GLYSA = 'glysa',
+  LEXEND_DECA = 'lexendDeca',
+}
+
 export const theme = {
   colors: {
     G100: setVar('G100'),
@@ -18,12 +23,12 @@ export const theme = {
     textDisabled: setVar('textDisabled'),
   },
   fonts: {
-    lexendDeca: setVar('lexendDeca'),
-    glysa: setVar('glysa'),
+    lexendDeca: setVar(Fonts.LEXEND_DECA),
+    glysa: setVar(Fonts.GLYSA),
   },
   typography: {
     H1: {
-      fontFamily: 'Glysa',
+      fontFamily: setVar(Fonts.GLYSA),
       fontStyle: 'normal',
       fontWeight: '500',
       fontSize: '32px',
@@ -31,21 +36,21 @@ export const theme = {
       letterSpacing: '0%',
     },
     H2: {
-      fontFamily: 'Glysa',
+      fontFamily: setVar(Fonts.GLYSA),
       fontStyle: 'normal',
       fontSize: '24px',
       lineHeight: '40px',
       letterSpacing: '0%',
     },
     H3: {
-      fontFamily: 'Lexend Deca',
+      fontFamily: setVar(Fonts.LEXEND_DECA),
       fontStyle: 'regular',
       fontSize: '16px',
       lineHeight: '24px',
       letterSpacing: '1%',
     },
     message: {
-      fontFamily: 'Lexend Deca',
+      fontFamily: setVar(Fonts.LEXEND_DECA),
       fontStyle: 'normal',
       fontSize: '12px',
       lineHeight: '16px',

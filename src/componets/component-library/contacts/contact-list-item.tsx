@@ -71,7 +71,7 @@ const DropdownListItem = styled('div')(({ theme }) => ({
   },
   p: {
     color: theme.colors.textPrimary,
-    fontFamily: 'Lexend Deca',
+    fontFamily: theme.fonts.lexendDeca,
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: '14px',
