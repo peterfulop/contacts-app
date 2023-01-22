@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import NoImage from '../../../assets/avatars/Default.png';
-import { TEXT, t } from '../../../helpers/text';
+import { TEXT, t } from '../../../helpers/translate';
 import styled from '../../../theme/styled';
 import { theme } from '../../../theme/theme';
 import { Contact } from '../../../types';

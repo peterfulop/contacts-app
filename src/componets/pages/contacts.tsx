@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Avatar from '../../assets/avatars/Photo.png';
-import { TEXT, t } from '../../helpers/text';
+import { TEXT, t } from '../../helpers/translate';
 import styled from '../../theme/styled';
 import { Contact } from '../../types';
 import { Button } from '../component-library/button/button';

@@ -11,6 +11,14 @@ export type Text = {
       };
     };
   };
+  forms: {
+    addContactForm: {
+      title: Content;
+    };
+    editContactForm: {
+      title: Content;
+    };
+  };
   buttons: {
     addNew: Content;
     edit: Content;
@@ -34,6 +42,14 @@ export const TEXT: Text = {
         title: { ENG: 'contacts' },
         noContacts: { ENG: 'there are no contacts yet...' },
       },
+    },
+  },
+  forms: {
+    addContactForm: {
+      title: { ENG: 'Add contact' },
+    },
+    editContactForm: {
+      title: { ENG: 'Add contact' },
     },
   },
   buttons: {
