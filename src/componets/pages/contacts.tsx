@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Avatar from '../../assets/avatars/Photo.png';
 import { TEXT, t } from '../../text';
+import styled from '../../theme/styled';
 import { Button } from '../component-library/button/button';
 import { ContactList } from '../component-library/contacts/contact-list';
 import { Icon } from '../component-library/icon-item/icon-item';
@@ -30,6 +30,9 @@ const Header = styled('header')(({ theme }) => ({
   h1: {
     ...theme.typography.H1,
     color: theme.colors.textPrimary,
+    ':first-letter': {
+      textTransform: 'capitalize',
+    },
   },
 }));
 

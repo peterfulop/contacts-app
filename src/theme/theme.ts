@@ -25,7 +25,6 @@ export const theme = {
       fontSize: '32px',
       lineHeight: '48px',
       letterSpacing: '0%',
-      textTransform: 'capitalize',
     },
     H2: {
       fontFamily: 'Glysa',
@@ -51,4 +50,4 @@ export const theme = {
   },
 };
 
-export type ThemeType = typeof theme;
+export type CustomTheme = typeof theme;

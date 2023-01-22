@@ -1,6 +1,7 @@
-import styled from 'styled-components';
 import { Contacts } from './componets/pages/contacts';
 import { Theme } from './theme/theme-provider';
+
+import styled from './theme/styled';
 
 export const Div = styled('div')({
   display: 'flex',

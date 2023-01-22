@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../../../theme/styled';
 import { Contact } from '../../pages/contacts';
 import { ContactListItem } from './contact-list-item';
 

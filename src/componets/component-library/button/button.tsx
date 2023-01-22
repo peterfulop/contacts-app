@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../../../theme/styled';
 import { Icon } from '../icon-item/icon-item';
 import { IconType } from '../icons';
 
@@ -7,7 +7,7 @@ export enum ButtonVariant {
   BORDERED = 'BORDERED',
 }
 
-export enum ButtonTheme {
+export enum Theme {
   PRIMARY = 'PRIMARY',
   SECONDARY = 'SECONDARY',
 }
@@ -20,7 +20,7 @@ export enum ButtonState {
 
 type ButtonProps = {
   variant: keyof typeof ButtonVariant;
-  theme?: keyof typeof ButtonTheme;
+  theme?: keyof typeof Theme;
   label?: string;
   icon?: IconType;
   reverse?: boolean;
@@ -123,7 +123,7 @@ export const Button = (props: ButtonProps) => {
         </ButtonBorderedPrimary>
       )}
       {props.variant === ButtonVariant.FLAT &&
-        (props.theme === ButtonTheme.SECONDARY ? (
+        (props.theme === Theme.SECONDARY ? (
           <ButtonFlatSecondary onClick={props.onClick}>
             <ButtonContent {...props} />
           </ButtonFlatSecondary>
