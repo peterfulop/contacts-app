@@ -12,26 +12,47 @@ export type Text = {
     };
   };
   forms: {
-    addContactForm: {
-      title: Content;
-    };
-    editContactForm: {
-      title: Content;
+    contactForms: {
+      add: {
+        title: Content;
+      };
+      edit: {
+        title: Content;
+      };
+      delete: {
+        title: Content;
+        labels: {
+          confirmDelete: Content;
+        };
+      };
+      inputFields: {
+        name: {
+          label: Content;
+          placeholder: Content;
+        };
+        phone: {
+          label: Content;
+          placeholder: Content;
+        };
+        email: {
+          label: Content;
+          placeholder: Content;
+        };
+      };
+      errors: {
+        allFieldsRequired: Content;
+      };
     };
   };
   buttons: {
     addNew: Content;
+    addPicture: Content;
     edit: Content;
     favourite: Content;
     remove: Content;
     changePicture: Content;
     done: Content;
     cancel: Content;
-  };
-  inputFields: {
-    name: Content;
-    phoneNumber: Content;
-    emailAddress: Content;
   };
 };
 
@@ -45,26 +66,49 @@ export const TEXT: Text = {
     },
   },
   forms: {
-    addContactForm: {
-      title: { ENG: 'Add contact' },
-    },
-    editContactForm: {
-      title: { ENG: 'Add contact' },
+    contactForms: {
+      add: {
+        title: { ENG: 'Add contact' },
+      },
+      edit: {
+        title: { ENG: 'Edit contact' },
+      },
+      delete: {
+        title: { ENG: 'Delete contact' },
+        labels: {
+          confirmDelete: {
+            ENG: 'Dou you really want to delete the selected contact?',
+          },
+        },
+      },
+      inputFields: {
+        name: {
+          label: { ENG: 'Name' },
+          placeholder: { ENG: 'Jamie Wright' },
+        },
+        phone: {
+          label: { ENG: 'Phone number' },
+          placeholder: { ENG: '+01 234 5678' },
+        },
+        email: {
+          label: { ENG: 'Email address' },
+          placeholder: { ENG: 'jamie.wright@email.com' },
+        },
+      },
+      errors: {
+        allFieldsRequired: { ENG: 'All fields are required!' },
+      },
     },
   },
   buttons: {
     addNew: { ENG: 'add new' },
+    addPicture: { ENG: 'add picture' },
     edit: { ENG: 'edit' },
     favourite: { ENG: 'favourite' },
     remove: { ENG: 'remove' },
     done: { ENG: 'done' },
     cancel: { ENG: 'cancel' },
     changePicture: { ENG: 'change picture' },
-  },
-  inputFields: {
-    name: { ENG: 'name' },
-    phoneNumber: { ENG: 'phone number' },
-    emailAddress: { ENG: 'email address' },
   },
 };
 

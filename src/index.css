@@ -35,10 +35,10 @@ body {
   --G10: #414141;
   --G00: '#19191900';
 
-  /* TEXT */
-  --textPrimary: white;
-  --textSecondary: #ffffff8f;
-  --textDisabled: #ffffff52;
+  --primary: white;
+  --secondary: #ffffff8f;
+  --disabled: #ffffff52;
+  --error: rgb(210, 55, 27);
 
   /* FONTS */
   --glysa: 'Glysa';
@@ -51,5 +51,5 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: var(--G100);
-  color: var(--textPrimary);
+  color: var(--primary);
 }

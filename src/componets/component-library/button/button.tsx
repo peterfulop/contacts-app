@@ -3,28 +3,24 @@ import { ButtonVariant, Theme } from '../../../types';
 import { Icon } from '../icon/icon';
 import { IconType } from '../icons';
 
-type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: keyof typeof ButtonVariant;
-  theme?: keyof typeof Theme;
+  theme: keyof typeof Theme;
   label?: string;
   icon?: IconType;
   reverse?: boolean;
   isActive?: boolean;
   activeColor?: string;
-  onClick?: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined
-  ) => any;
 };
 
 const MainButton = styled('button')(({ theme }) => ({
+  fontFamily: theme.fonts.lexendDeca,
   fontWeight: '400',
   fontSize: '14px',
   cursor: 'pointer',
   height: '40px',
-  color: theme.colors.textPrimary,
+  lineHeight: '18px',
+  color: theme.colors.primary,
   border: 'none',
   background: 'none',
   p: {
@@ -96,15 +92,18 @@ const ButtonContent = (props: ButtonProps) => {
       }}
     >
       {props.icon && (
-        <Icon icon={props.icon} img={{ style: { margin: '0px 8px' } }} />
+        <Icon icon={props.icon} img={{ style: { margin: '0px 4px' } }} />
       )}
-      <p
-        style={{
-          margin: `${props.label ? '0 8px 0 8px' : '0'}`,
-        }}
-      >
-        {props.label}
-      </p>
+      {props.label && (
+        <p
+          style={{
+            margin: `${props.label ? '0 8px 0 8px' : '0'}`,
+          }}
+        >
+          {props.label}
+        </p>
+      )}
+      {props.children}
     </div>
   );
 };
@@ -113,17 +112,17 @@ export const Button = (props: ButtonProps) => {
   return (
     <>
       {props.variant === ButtonVariant.BORDERED && (
-        <ButtonBorderedPrimary onClick={props.onClick}>
+        <ButtonBorderedPrimary onClick={props.onClick} type={props.type}>
           <ButtonContent {...props} />
         </ButtonBorderedPrimary>
       )}
       {props.variant === ButtonVariant.FLAT &&
         (props.theme === Theme.SECONDARY ? (
-          <ButtonFlatSecondary onClick={props.onClick}>
+          <ButtonFlatSecondary onClick={props.onClick} type={props.type}>
             <ButtonContent {...props} />
           </ButtonFlatSecondary>
         ) : (
-          <ButtonFlatPrimary onClick={props.onClick}>
+          <ButtonFlatPrimary onClick={props.onClick} type={props.type}>
             <ButtonContent {...props} />
           </ButtonFlatPrimary>
         ))}

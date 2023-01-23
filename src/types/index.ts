@@ -1,7 +1,9 @@
 export type Contact = {
   name: string;
   phone: string;
+  email: string;
   avatar: string;
+  id: string;
 };
 
 export enum ButtonVariant {

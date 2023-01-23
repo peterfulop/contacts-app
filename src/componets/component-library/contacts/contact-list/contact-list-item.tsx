@@ -1,28 +1,22 @@
 import { useState } from 'react';
-import NoImage from '../../../assets/avatars/Default.png';
-import { TEXT, t } from '../../../helpers/translate';
-import styled from '../../../theme/styled';
-import { theme } from '../../../theme/theme';
-import { Contact } from '../../../types';
-import { Button } from '../button/button';
-import { Icon } from '../icon/icon';
+import { TEXT, t } from '../../../../helpers/translate';
+import styled from '../../../../theme/styled';
+import { theme } from '../../../../theme/theme';
+import { Contact } from '../../../../types';
+import { Button } from '../../button/button';
+import { Icon } from '../../icon/icon';
+import { ContactFormAction } from '../form/form';
+import { ContactListItemData } from './contact-list-item-data';
 
-const ContactItem = styled('div')(({ theme }) => ({
+const ContactItem = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
   gap: '16px',
   padding: '12px 0',
-  h3: {
-    ...theme.typography.H3,
-  },
-  p: {
-    ...theme.typography.message,
-    color: theme.colors.textSecondary,
-  },
   ':hover :last-of-type': {
     visibility: 'visible',
   },
-}));
+});
 
 const Avatar = styled('img')(({ theme }) => ({
   width: '40px',
@@ -70,7 +64,7 @@ const DropdownListItem = styled('div')(({ theme }) => ({
     opacity: '56%',
   },
   p: {
-    color: theme.colors.textPrimary,
+    color: theme.colors.primary,
     fontFamily: theme.fonts.lexendDeca,
     fontStyle: 'normal',
     fontWeight: '400',
@@ -97,18 +91,39 @@ const DropdownListItem = styled('div')(({ theme }) => ({
   },
 }));
 
-export const ContactListItem = (props: { contact: Contact }) => {
+type ContactListItemProps = {
+  contact: Contact;
+  setFormAction: React.Dispatch<React.SetStateAction<ContactFormAction | null>>;
+  setSelectedContact: React.Dispatch<React.SetStateAction<Contact | null>>;
+};
+
+export const ContactListItem = (props: ContactListItemProps) => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
 
+  const handleDeleteAction = () => {
+    props.setSelectedContact(props.contact);
+    props.setFormAction(ContactFormAction.DELETE);
+  };
+
+  const handleEditAction = () => {
+    props.setSelectedContact(props.contact);
+    props.setFormAction(ContactFormAction.EDIT);
+  };
+
   return (
-    <ContactItem onMouseLeave={() => setDropdownMenu(false)}>
-      <ContactData>
+    <ContactItem
+      onMouseLeave={() => {
+        setDropdownMenu(false);
+      }}
+    >
+      {/* <ContactData>
         <Avatar src={props.contact.avatar || NoImage} />
         <div>
           <h3>{props.contact.name}</h3>
           <p>{props.contact.phone}</p>
         </div>
-      </ContactData>
+      </ContactData> */}
+      <ContactListItemData contact={props.contact} />
       <ContactActions>
         <Buttons>
           <Button icon={'Mute'} variant={'FLAT'} theme={'SECONDARY'} />
@@ -117,7 +132,9 @@ export const ContactListItem = (props: { contact: Contact }) => {
             icon={'More'}
             variant={'FLAT'}
             theme={'SECONDARY'}
-            onClick={() => setDropdownMenu((prevState) => !prevState)}
+            onClick={() => {
+              setDropdownMenu((prevState) => !prevState);
+            }}
             isActive={dropdownMenu}
             activeColor={theme.colors.G80}
           />
@@ -128,7 +145,7 @@ export const ContactListItem = (props: { contact: Contact }) => {
               setDropdownMenu(false);
             }}
           >
-            <DropdownListItem>
+            <DropdownListItem onClick={() => handleEditAction()}>
               <Icon icon='Settings' />
               <p>{t(TEXT.buttons.edit)}</p>
             </DropdownListItem>
@@ -136,7 +153,7 @@ export const ContactListItem = (props: { contact: Contact }) => {
               <Icon icon='Favourite' />
               <p>{t(TEXT.buttons.favourite)}</p>
             </DropdownListItem>
-            <DropdownListItem>
+            <DropdownListItem onClick={handleDeleteAction}>
               <Icon icon='Delete' img={{ style: { marginLeft: '3px' } }} />
               <p>{t(TEXT.buttons.remove)}</p>
             </DropdownListItem>

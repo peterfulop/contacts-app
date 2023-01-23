@@ -4,7 +4,7 @@ import styled from '../../../theme/styled';
 const MainInputField = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  margin: '24px 0',
+  margin: '12px 0',
   label: {
     fontFamily: theme.fonts.lexendDeca,
     fontStyle: 'normal',
@@ -12,12 +12,12 @@ const MainInputField = styled('div')(({ theme }) => ({
     fontSize: '12px',
     lineHeight: '16px',
     letterSpacing: '0.01em',
-    color: theme.colors.textSecondary,
+    color: theme.colors.secondary,
     marginBottom: '4px',
     ':first-letter': { textTransform: 'uppercase' },
   },
   input: {
-    color: theme.colors.textPrimary,
+    color: theme.colors.primary,
     fontFamily: theme.fonts.lexendDeca,
     fontStyle: 'normal',
     fontWeight: '400',
@@ -37,6 +37,10 @@ const MainInputField = styled('div')(({ theme }) => ({
       backgroundColor: theme.colors.G60,
     },
   },
+  small: {
+    color: theme.colors.secondary,
+    margin: '5px',
+  },
 }));
 
 type InputFieldProps = React.DetailedHTMLProps<
@@ -44,13 +48,21 @@ type InputFieldProps = React.DetailedHTMLProps<
   HTMLInputElement
 > & {
   label: string;
+  errorMessage?: string;
+  onChange?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 export const InputField = (props: InputFieldProps) => {
   return (
     <MainInputField>
       <label htmlFor={props.id}>{props.label}</label>
-      <input type={props.type} id={props.id} placeholder={props.placeholder} />
+      <input
+        {...props}
+        type={props.type}
+        id={props.id}
+        placeholder={props.placeholder}
+      />
+      <small>{props.errorMessage}</small>
     </MainInputField>
   );
 };

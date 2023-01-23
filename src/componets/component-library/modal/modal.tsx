@@ -1,6 +1,30 @@
 import { Fragment, MouseEventHandler } from 'react';
 import ReactDOM from 'react-dom';
-import styles from './Modal.module.css';
+
+import styled from '../../../theme/styled';
+
+const BackdropDiv = styled('div')({
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100vh',
+  zIndex: ' 20',
+  backgroundColor: 'rgba(0, 0, 0, 0.4)',
+});
+
+const ModalOverlayDiv = styled('div')(({ theme }) => ({
+  padding: '24px',
+  position: 'fixed',
+  width: '100%',
+  maxWidth: '364px',
+  left: '50%',
+  top: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: theme.colors.G100,
+  borderRadius: '8px',
+  zIndex: '30',
+}));
 
 const Backdrop = (props: {
   onClose:
@@ -8,19 +32,14 @@ const Backdrop = (props: {
     | MouseEventHandler<HTMLDivElement>;
 }) => {
   return (
-    <div
+    <BackdropDiv
       onClick={props.onClose as MouseEventHandler<HTMLDivElement>}
-      className={styles.backdrop}
-    ></div>
+    ></BackdropDiv>
   );
 };
 
 const ModalOverlay = (props: { children: React.ReactNode }) => {
-  return (
-    <div className={styles.modal}>
-      <div className={styles.content}>{props.children}</div>
-    </div>
-  );
+  return <ModalOverlayDiv>{props.children}</ModalOverlayDiv>;
 };
 
 const portalElement = document.getElementById('overlays') as HTMLElement;
