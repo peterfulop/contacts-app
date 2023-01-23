@@ -53,3 +53,18 @@ body {
   background-color: var(--G100);
   color: var(--primary);
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--G80);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--G10);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--G50);
+}

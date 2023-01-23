@@ -1,4 +1,5 @@
 import styled from '../../../../theme/styled';
+import { breakPoints } from '../../../../theme/theme';
 import { Contact } from '../../../../types';
 import { ContactFormAction } from '../form/form';
 import { ContactListItem } from './contact-list-item';
@@ -7,6 +8,11 @@ const List = styled('div')({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
+  maxHeight: '700px',
+  overflow: 'auto',
+  [`@media screen and (max-width: ${breakPoints.sm})`]: {
+    padding: '12px',
+  },
 });
 
 type ContactListProps = {

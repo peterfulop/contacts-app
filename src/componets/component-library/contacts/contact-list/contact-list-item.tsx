@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TEXT, t } from '../../../../helpers/translate';
 import styled from '../../../../theme/styled';
-import { theme } from '../../../../theme/theme';
+import { breakPoints, theme } from '../../../../theme/theme';
 import { Contact } from '../../../../types';
 import { Button } from '../../button/button';
 import { Icon } from '../../icon/icon';
@@ -18,22 +18,13 @@ const ContactItem = styled('div')({
   },
 });
 
-const Avatar = styled('img')(({ theme }) => ({
-  width: '40px',
-  height: '40px',
-  border: `1px solid ${theme.colors.G40}`,
-  borderRadius: '20px',
-}));
-
-const ContactData = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-between',
-  gap: '8px',
-});
-
 const ContactActions = styled('div')({
   visibility: 'hidden',
   position: 'relative',
+  marginRight: '1rem',
+  [`@media screen and (max-width: ${breakPoints.sm})`]: {
+    marginRight: '0px',
+  },
 });
 
 const Buttons = styled('div')({
@@ -44,8 +35,8 @@ const Buttons = styled('div')({
 
 const DropdownList = styled('div')(({ theme }) => ({
   position: 'absolute',
-  marginTop: '8px',
-  left: '105px',
+  marginTop: '5px',
+  left: '-92px',
   right: 0,
   display: 'flex',
   flexDirection: 'column',
@@ -116,13 +107,6 @@ export const ContactListItem = (props: ContactListItemProps) => {
         setDropdownMenu(false);
       }}
     >
-      {/* <ContactData>
-        <Avatar src={props.contact.avatar || NoImage} />
-        <div>
-          <h3>{props.contact.name}</h3>
-          <p>{props.contact.phone}</p>
-        </div>
-      </ContactData> */}
       <ContactListItemData contact={props.contact} />
       <ContactActions>
         <Buttons>

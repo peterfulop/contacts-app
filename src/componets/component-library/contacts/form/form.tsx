@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import DefaultImage from '../../../../assets/avatars/Default.png';
 import { TEXT, t } from '../../../../helpers/translate';
 import styled from '../../../../theme/styled';
 import { Contact } from '../../../../types';
 import { Button } from '../../button/button';
+import { ImageUploader } from '../../image-uploader/image-uploader';
 import { InputField } from '../../input-field/input-field';
 import { ContactListItemData } from '../contact-list/contact-list-item-data';
 const Form = styled('form')(({ theme }) => ({
@@ -25,28 +25,28 @@ const FormActions = styled('div')(({ theme }) => ({
   gap: '8px',
 }));
 
-const ImageHandler = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '1rem',
-  margin: '24px 0',
-}));
+// const ImageHandler = styled('div')(({ theme }) => ({
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+//   gap: '1rem',
+//   margin: '24px 0',
+// }));
 
-const ImageModifier = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '8px',
-}));
+// const ImageModifier = styled('div')(({ theme }) => ({
+//   display: 'flex',
+//   alignItems: 'center',
+//   gap: '8px',
+// }));
 
-const Avatar = styled('div')(({ theme }) => ({
-  img: {
-    width: '88px',
-    height: '88px',
-    borderRadius: '44px',
-    border: `1px solid ${theme.colors.G70}`,
-  },
-}));
+// const Avatar = styled('div')(({ theme }) => ({
+//   img: {
+//     width: '88px',
+//     height: '88px',
+//     borderRadius: '44px',
+//     border: `1px solid ${theme.colors.G70}`,
+//   },
+// }));
 
 export enum ContactFormAction {
   EDIT = 'edit',
@@ -62,10 +62,13 @@ export type ContactFormProps = {
 };
 
 export const ContactForm = (props: ContactFormProps) => {
-  const [inputImage, setInputImage] = useState('');
   const [inputName, setInputName] = useState('');
   const [inputPhone, setInputPhone] = useState('');
   const [inputEmail, setInputEmail] = useState('');
+
+  const [image, setImage] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+
   const [contact, setContact] = useState<Contact | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
 
@@ -75,17 +78,26 @@ export const ContactForm = (props: ContactFormProps) => {
       setInputName(props.contact.name);
       setInputPhone(props.contact.phone);
       setInputEmail(props.contact.email);
-      setInputImage(props.contact.avatar);
+      setImage(props.contact.avatar);
     }
   }, [contact]);
 
   const setAction = () => {
     switch (props.action) {
       case ContactFormAction.ADD:
+        {
+          console.log('ADD new contact!');
+        }
         break;
       case ContactFormAction.EDIT:
+        {
+          console.log('EDIT contact!');
+        }
         break;
       case ContactFormAction.DELETE:
+        {
+          console.log('DELETE contact!');
+        }
         break;
     }
   };
@@ -110,6 +122,7 @@ export const ContactForm = (props: ContactFormProps) => {
     if (!isValid) {
       return;
     }
+    setAction();
     resetForm();
   };
 
@@ -127,36 +140,12 @@ export const ContactForm = (props: ContactFormProps) => {
       {(props.action === ContactFormAction.ADD ||
         props.action === ContactFormAction.EDIT) && (
         <div>
-          <ImageHandler>
-            <Avatar>
-              <img src={contact?.avatar || DefaultImage} alt='' />
-            </Avatar>
-            {!contact?.avatar ? (
-              <Button
-                type='button'
-                variant='FLAT'
-                theme='PRIMARY'
-                label={t(TEXT.buttons.addPicture)}
-                icon='Add'
-              ></Button>
-            ) : (
-              <ImageModifier>
-                <Button
-                  type='button'
-                  variant='FLAT'
-                  theme='PRIMARY'
-                  label={t(TEXT.buttons.changePicture)}
-                  icon='Change'
-                ></Button>
-                <Button
-                  type='button'
-                  variant='FLAT'
-                  theme='PRIMARY'
-                  icon='Delete'
-                />
-              </ImageModifier>
-            )}
-          </ImageHandler>
+          <ImageUploader
+            image={image}
+            fileName={fileName}
+            setImage={setImage}
+            setFileName={setFileName}
+          />
           <InputField
             type={'text'}
             label={t(TEXT.forms.contactForms.inputFields.name.label)}

@@ -8,9 +8,16 @@ import {
   ContactForm,
   ContactFormAction,
 } from '../component-library/contacts/form/form';
-import { Icon } from '../component-library/icon/icon';
 import Modal from '../component-library/modal/modal';
-import { Col, Header, HeaderActions, Main, Section } from './styled-components';
+import {
+  Col,
+  Header,
+  HeaderActions,
+  HeaderContent,
+  IconList,
+  Main,
+  Section,
+} from './styled-components';
 
 export const Contacts = () => {
   const [contacts, setContacts] = useState<Contact[] | null>();
@@ -82,14 +89,21 @@ export const Contacts = () => {
         </Modal>
       )}
       <Col>
-        <Icon icon={'BackArrow'} />
+        <Button variant={'FLAT'} theme={'SECONDARY'} icon={'BackArrow'} />
       </Col>
       <Section>
         <Header>
-          <h1>{t(TEXT.pages.contacts.labels.title)}</h1>
+          <HeaderContent>
+            <Button variant={'FLAT'} theme={'SECONDARY'} icon={'BackArrow'} />
+            <h1>{t(TEXT.pages.contacts.labels.title)}</h1>
+            <Button variant={'FLAT'} theme={'SECONDARY'} icon={'LightMode'} />
+          </HeaderContent>
+
           <HeaderActions>
-            <Icon icon={'Settings'} />
-            <img src={Avatar} width={22} height={22} />
+            <IconList>
+              <Button variant={'FLAT'} theme={'SECONDARY'} icon={'Settings'} />
+              <img src={Avatar} width={22} height={22} />
+            </IconList>
             <Button
               variant={'BORDERED'}
               theme={'PRIMARY'}
@@ -112,7 +126,7 @@ export const Contacts = () => {
         </Main>
       </Section>
       <Col>
-        <Icon icon={'LightMode'} />
+        <Button variant={'FLAT'} theme={'SECONDARY'} icon={'LightMode'} />
       </Col>
     </>
   );

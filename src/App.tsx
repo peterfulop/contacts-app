@@ -2,6 +2,7 @@ import { Contacts } from './componets/pages/contacts';
 import { Theme } from './theme/theme-provider';
 
 import styled from './theme/styled';
+import { breakPoints } from './theme/theme';
 
 const Div = styled('div')({
   display: 'flex',
@@ -9,6 +10,15 @@ const Div = styled('div')({
   justifyContent: 'center',
   width: '100%',
   marginTop: '96px',
+  [`@media screen and (max-width: ${breakPoints.lg})`]: {
+    marginTop: '48px',
+  },
+  [`@media screen and (max-width: ${breakPoints.md})`]: {
+    marginTop: '24px',
+  },
+  [`@media screen and (max-width: ${breakPoints.sm})`]: {
+    marginTop: '0px',
+  },
 });
 
 function App() {
