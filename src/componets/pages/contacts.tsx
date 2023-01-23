@@ -6,6 +6,7 @@ import { Contact } from '../../types';
 import { Button } from '../component-library/button/button';
 import { ContactList } from '../component-library/contacts/contact-list';
 import { Icon } from '../component-library/icon/icon';
+import Modal from '../component-library/modal/modal';
 
 const Header = styled('header')(({ theme }) => ({
   display: 'flex',
@@ -45,10 +46,9 @@ const Section = styled('section')({
   width: '100%',
 });
 
-export const Contacts = (props: {
-  onShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+export const Contacts = () => {
   const [contacts, setContacts] = useState<Contact[] | null>();
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const data = [
@@ -83,6 +83,12 @@ export const Contacts = (props: {
 
   return (
     <>
+      {modalVisible && (
+        <Modal onClose={() => setModalVisible(false)}>
+          HELLO FROM MODAL!
+          <button onClick={() => setModalVisible(false)}>close modal</button>
+        </Modal>
+      )}
       <Col>
         <Icon icon={'BackArrow'} />
       </Col>
@@ -97,7 +103,7 @@ export const Contacts = (props: {
               theme={'PRIMARY'}
               icon={'Add'}
               label={t(TEXT.buttons.addNew)}
-              onClick={() => props.onShowModal(true)}
+              onClick={() => setModalVisible(true)}
             />
           </HeaderActions>
         </Header>

@@ -1,8 +1,6 @@
 import { Contacts } from './componets/pages/contacts';
 import { Theme } from './theme/theme-provider';
 
-import { useState } from 'react';
-import Modal from './componets/component-library/modal/modal';
 import styled from './theme/styled';
 
 export const Div = styled('div')({
@@ -18,13 +16,13 @@ export const Col = styled('div')({
 });
 
 function App() {
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <Theme>
-      {modalVisible && <Modal onClose={() => setModalVisible(false)} />}
+      {/* {modalVisible && <Modal onClose={() => setModalVisible(false)} />} */}
       <Div>
-        <Contacts onShowModal={setModalVisible} />
+        <Contacts />
       </Div>
     </Theme>
   );
