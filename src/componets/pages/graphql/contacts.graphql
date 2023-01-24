@@ -1,0 +1,11 @@
+query GetContacts {
+  getContacts {
+    contacts {
+      id
+      email
+      name
+      image
+      phone
+    }
+  }
+}
