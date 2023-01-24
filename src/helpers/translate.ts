@@ -2,6 +2,7 @@ export enum Languages {
   ENG = 'ENG',
 }
 export type Content = Record<Languages, string>;
+
 export type Text = {
   pages: {
     contacts: {
@@ -16,7 +17,7 @@ export type Text = {
       add: {
         title: Content;
       };
-      edit: {
+      update: {
         title: Content;
       };
       delete: {
@@ -54,6 +55,10 @@ export type Text = {
     done: Content;
     cancel: Content;
   };
+  general: {
+    loading: Content;
+    serverError: Content;
+  };
 };
 
 export const TEXT: Text = {
@@ -70,7 +75,7 @@ export const TEXT: Text = {
       add: {
         title: { ENG: 'Add contact' },
       },
-      edit: {
+      update: {
         title: { ENG: 'Edit contact' },
       },
       delete: {
@@ -109,6 +114,10 @@ export const TEXT: Text = {
     done: { ENG: 'done' },
     cancel: { ENG: 'cancel' },
     changePicture: { ENG: 'change picture' },
+  },
+  general: {
+    loading: { ENG: 'fetching data...' },
+    serverError: { ENG: 'Server Error. Something went wrong! :( ' },
   },
 };
 

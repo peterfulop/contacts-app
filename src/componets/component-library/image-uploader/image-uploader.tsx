@@ -4,25 +4,26 @@ import { Button } from '../button/button';
 
 import DefaultImage from '../../../assets/avatars/Default.png';
 
-const Uploader = styled('div')(({ theme }) => ({
+const Uploader = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   gap: '1rem',
   margin: '24px 0',
-}));
+});
 
-const ImageModifier = styled('div')(({ theme }) => ({
+const ImageModifier = styled('div')({
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
-}));
+});
 
 const Avatar = styled('div')(({ theme }) => ({
   img: {
     width: '88px',
     height: '88px',
     borderRadius: '44px',
+    objectFit: 'cover',
     border: `1px solid ${theme.colors.G70}`,
   },
 }));

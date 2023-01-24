@@ -1,11 +1,3 @@
-export type Contact = {
-  name: string;
-  phone: string;
-  email: string;
-  avatar: string;
-  id: string;
-};
-
 export enum ButtonVariant {
   FLAT = 'FLAT',
   BORDERED = 'BORDERED',
@@ -20,4 +12,10 @@ export enum InputState {
   DEFAULT = 'DEFAULT',
   ACTIVE = 'ACTIVE',
   HOVER = 'HOVER',
+}
+
+export enum ContactFormAction {
+  UPDATE = 'update',
+  ADD = 'add',
+  DELETE = 'delete',
 }

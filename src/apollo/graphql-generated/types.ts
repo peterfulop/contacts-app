@@ -35,6 +35,14 @@ export type ContactPayload = {
   userErrors: Array<UserError>;
 };
 
+export type ContactUpdateInput = {
+  email: Scalars['String'];
+  id: Scalars['ID'];
+  image: Scalars['String'];
+  name: Scalars['String'];
+  phone: Scalars['String'];
+};
+
 export type ContactsPayload = {
   __typename?: 'ContactsPayload';
   contacts?: Maybe<Array<Contact>>;
@@ -61,8 +69,7 @@ export type MutationContactDeleteArgs = {
 
 
 export type MutationContactUpdateArgs = {
-  id: Scalars['ID'];
-  input: ContactInput;
+  input: ContactUpdateInput;
 };
 
 export type Query = {

@@ -1,8 +1,8 @@
-import { Contacts } from './componets/pages/contacts';
-import { Theme } from './theme/theme-provider';
-
+import { BrowserRouter } from 'react-router-dom';
+import { GenerateBrowserRouter } from './componets/component-library/generate-browser-router/generate-browser-router';
 import styled from './theme/styled';
 import { breakPoints } from './theme/theme';
+import { Theme } from './theme/theme-provider';
 
 const Div = styled('div')({
   display: 'flex',
@@ -23,11 +23,13 @@ const Div = styled('div')({
 
 function App() {
   return (
-    <Theme>
-      <Div>
-        <Contacts />
-      </Div>
-    </Theme>
+    <BrowserRouter>
+      <Theme>
+        <Div>
+          <GenerateBrowserRouter />
+        </Div>
+      </Theme>
+    </BrowserRouter>
   );
 }
 

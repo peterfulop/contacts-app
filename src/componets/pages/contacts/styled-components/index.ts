@@ -1,5 +1,5 @@
-import styled from '../../../theme/styled';
-import { breakPoints } from '../../../theme/theme';
+import styled from '../../../../theme/styled';
+import { breakPoints } from '../../../../theme/theme';
 
 export const Header = styled('header')(({ theme }) => ({
   display: 'flex',

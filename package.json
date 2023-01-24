@@ -13,7 +13,9 @@
     "@apollo/client": "^3.7.3",
     "graphql": "^16.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^3.2.1",

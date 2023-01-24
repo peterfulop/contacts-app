@@ -1,6 +1,6 @@
+import { Contact } from '../../../../apollo/graphql-generated/types';
 import DefaultImage from '../../../../assets/avatars/Default.png';
 import styled from '../../../../theme/styled';
-import { Contact } from '../../../../types';
 
 const Avatar = styled('img')(({ theme }) => ({
   width: '40px',
@@ -30,7 +30,7 @@ type ContactListItemData = React.HTMLAttributes<HTMLDivElement> & {
 export const ContactListItemData = (props: ContactListItemData) => {
   return (
     <ContactData>
-      <Avatar src={props.contact.avatar || DefaultImage} />
+      <Avatar src={props.contact.image || DefaultImage} />
       <div {...props}>
         <h3>{props.contact.name}</h3>
         <p>{props.contact.phone}</p>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { ContactUpdateInput } from '../../../../apollo/graphql-generated/types';
 import { TEXT, t } from '../../../../helpers/translate';
 import styled from '../../../../theme/styled';
 import { breakPoints, theme } from '../../../../theme/theme';
-import { Contact } from '../../../../types';
 import { Button } from '../../button/button';
 import { Icon } from '../../icon/icon';
 import { ContactFormAction } from '../form/form';
@@ -83,9 +83,11 @@ const DropdownListItem = styled('div')(({ theme }) => ({
 }));
 
 type ContactListItemProps = {
-  contact: Contact;
+  contact: ContactUpdateInput;
   setFormAction: React.Dispatch<React.SetStateAction<ContactFormAction | null>>;
-  setSelectedContact: React.Dispatch<React.SetStateAction<Contact | null>>;
+  setSelectedContact: React.Dispatch<
+    React.SetStateAction<ContactUpdateInput | null>
+  >;
 };
 
 export const ContactListItem = (props: ContactListItemProps) => {
@@ -98,7 +100,7 @@ export const ContactListItem = (props: ContactListItemProps) => {
 
   const handleEditAction = () => {
     props.setSelectedContact(props.contact);
-    props.setFormAction(ContactFormAction.EDIT);
+    props.setFormAction(ContactFormAction.UPDATE);
   };
 
   return (

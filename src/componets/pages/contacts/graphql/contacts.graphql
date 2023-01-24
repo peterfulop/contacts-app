@@ -1,0 +1,54 @@
+query GetContacts {
+  getContacts {
+    contacts {
+      id
+      email
+      name
+      image
+      phone
+    }
+  }
+}
+
+mutation ContactCreate($input: ContactInput!) {
+  contactCreate(input: $input) {
+    userErrors {
+      message
+      values
+    }
+    contact {
+      id
+      email
+      name
+      image
+      phone
+    }
+  }
+}
+
+mutation ContactDelete($contactDeleteId: ID!) {
+  contactDelete(id: $contactDeleteId) {
+    userErrors {
+      message
+    }
+    contact {
+      id
+    }
+  }
+}
+
+mutation ContactUpdate($contactUpdateInput: ContactUpdateInput!) {
+  contactUpdate(input: $contactUpdateInput) {
+    userErrors {
+      message
+      values
+    }
+    contact {
+      id
+      email
+      name
+      image
+      phone
+    }
+  }
+}
