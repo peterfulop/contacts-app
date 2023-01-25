@@ -35,8 +35,9 @@ export const ContactList = (props: ContactListProps) => {
     const res = data?.getContacts.contacts;
     if (res) {
       const typeSafeContacts = res.map(
-        ({ name, email, phone, image }) =>
+        ({ id, name, email, phone, image }) =>
           ({
+            id,
             name,
             email,
             phone,
@@ -46,7 +47,6 @@ export const ContactList = (props: ContactListProps) => {
       setContacts(typeSafeContacts);
     }
   }, [data?.getContacts.contacts]);
-  console.log(error);
 
   return (
     <List>

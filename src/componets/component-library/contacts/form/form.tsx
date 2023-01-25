@@ -76,7 +76,7 @@ export const ContactForm = (props: ContactFormProps) => {
         break;
       case ContactFormAction.UPDATE:
         await updateContactMutation({
-          id: String(currContact?.id),
+          id: currContact?.id as string,
           contactInput,
           setValidationError,
           contactUpdateMutation,
@@ -85,7 +85,7 @@ export const ContactForm = (props: ContactFormProps) => {
         break;
       case ContactFormAction.DELETE:
         await deleteContactMutation({
-          id: String(currContact?.id),
+          id: currContact?.id as string,
           setValidationError,
           contactDeleteMutation,
           disableModal,

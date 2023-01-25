@@ -108,10 +108,6 @@ export const ContactListItem = (props: ContactListItemProps) => {
       onMouseLeave={() => {
         setDropdownMenu(false);
       }}
-      onClick={() => {
-        const res = document.getElementById(`${props.contact.id}`)?.click();
-        console.log(res);
-      }}
     >
       <ContactListItemData contact={props.contact} />
       <ContactActions>
