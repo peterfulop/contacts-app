@@ -1,6 +1,6 @@
 import { IconType } from '../../../assets/icons/.index';
 import styled from '../../../theme/styled';
-import { ButtonVariant, Theme } from '../../../types';
+import { ButtonVariant, Theme } from '../../../types/enums';
 import { Icon } from '../icon-item/icon';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {

@@ -1,8 +1,9 @@
-import { TEXT, t } from '../../../helpers/translate';
+import { TEXT } from '../../../helpers/translate/translate-object';
 import styled from '../../../theme/styled';
 import { Button } from '../button/button';
 
 import DefaultImage from '../../../assets/avatars/Default.png';
+import { translate } from '../../../helpers/translate/translate';
 
 const Uploader = styled('div')({
   display: 'flex',
@@ -67,7 +68,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
           type='button'
           variant='FLAT'
           theme='PRIMARY'
-          label={t(TEXT.buttons.addPicture)}
+          label={translate(TEXT.buttons.addPicture)}
           icon='Add'
           onClick={(e) => {
             document.getElementById('image-uploader-input')?.click();
@@ -80,7 +81,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
             type='button'
             variant='FLAT'
             theme='PRIMARY'
-            label={t(TEXT.buttons.changePicture)}
+            label={translate(TEXT.buttons.changePicture)}
             icon='Change'
             onClick={(e) => {
               document.getElementById('image-uploader-input')?.click();

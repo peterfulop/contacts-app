@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { ContactUpdateInput } from '../../../../apollo/graphql-generated/types';
-import { TEXT, t } from '../../../../helpers/translate';
+import { translate } from '../../../../helpers/translate/translate';
+import { TEXT } from '../../../../helpers/translate/translate-object';
 import styled from '../../../../theme/styled';
 import { breakPoints, theme } from '../../../../theme/theme';
-import { ContactFormAction } from '../../../../types';
+import { ContactFormAction } from '../../../../types/enums';
 import { Button } from '../../button/button';
 import { Icon } from '../../icon-item/icon';
 import { ContactListItemData } from './contact-list-item-data';
@@ -133,15 +134,15 @@ export const ContactListItem = (props: ContactListItemProps) => {
           >
             <DropdownListItem onClick={() => handleEditAction()}>
               <Icon icon='Settings' />
-              <p>{t(TEXT.buttons.edit)}</p>
+              <p>{translate(TEXT.buttons.edit)}</p>
             </DropdownListItem>
             <DropdownListItem>
               <Icon icon='Favourite' />
-              <p>{t(TEXT.buttons.favourite)}</p>
+              <p>{translate(TEXT.buttons.favourite)}</p>
             </DropdownListItem>
             <DropdownListItem onClick={handleDeleteAction}>
               <Icon icon='Delete' img={{ style: { marginLeft: '3px' } }} />
-              <p>{t(TEXT.buttons.remove)}</p>
+              <p>{translate(TEXT.buttons.remove)}</p>
             </DropdownListItem>
           </DropdownList>
         )}

@@ -48,6 +48,8 @@ export const createContactMutation = async (
       },
     });
     if (res.data?.contactCreate.userErrors.length) {
+      console.log(res.data?.contactCreate.userErrors);
+
       return input.setValidationError(
         res.data?.contactCreate.userErrors[0].message
       );

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ContactUpdateInput } from '../../../apollo/graphql-generated/types';
 import Avatar from '../../../assets/avatars/Photo.png';
-import { TEXT, t } from '../../../helpers/translate';
-import { ContactFormAction } from '../../../types';
+import { translate } from '../../../helpers/translate/translate';
+import { TEXT } from '../../../helpers/translate/translate-object';
+import { ContactFormAction } from '../../../types/enums';
 import { Button } from '../../component-library/button/button';
 import { ContactList } from '../../component-library/contacts/contact-list/contact-list';
 import { ContactForm } from '../../component-library/contacts/form/form';
@@ -14,6 +15,7 @@ import {
   HeaderActions,
   HeaderContent,
   IconList,
+  Layout,
   Main,
   Section,
 } from './styled-components';
@@ -37,7 +39,7 @@ export const Contacts = () => {
   }, [formAction]);
 
   return (
-    <>
+    <Layout>
       {modalVisible && formAction && (
         <Modal onClose={disableModal}>
           <ContactForm
@@ -55,7 +57,7 @@ export const Contacts = () => {
         <Header>
           <HeaderContent>
             <Button variant={'FLAT'} theme={'SECONDARY'} icon={'BackArrow'} />
-            <h1>{t(TEXT.pages.contacts.labels.title)}</h1>
+            <h1>{translate(TEXT.pages.contacts.labels.title)}</h1>
             <Button variant={'FLAT'} theme={'SECONDARY'} icon={'LightMode'} />
           </HeaderContent>
           <HeaderActions>
@@ -67,7 +69,7 @@ export const Contacts = () => {
               variant={'BORDERED'}
               theme={'PRIMARY'}
               icon={'Add'}
-              label={t(TEXT.buttons.addNew)}
+              label={translate(TEXT.buttons.addNew)}
               onClick={() => setFormAction(ContactFormAction.ADD)}
             />
           </HeaderActions>
@@ -82,6 +84,6 @@ export const Contacts = () => {
       <Col>
         <Button variant={'FLAT'} theme={'SECONDARY'} icon={'LightMode'} />
       </Col>
-    </>
+    </Layout>
   );
 };

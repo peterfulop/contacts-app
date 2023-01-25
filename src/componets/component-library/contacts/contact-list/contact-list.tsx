@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ContactUpdateInput } from '../../../../apollo/graphql-generated/types';
-import { TEXT, t } from '../../../../helpers/translate';
+import { translate } from '../../../../helpers/translate/translate';
+import { TEXT } from '../../../../helpers/translate/translate-object';
 import styled from '../../../../theme/styled';
 import { breakPoints } from '../../../../theme/theme';
-import { ContactFormAction } from '../../../../types';
+import { ContactFormAction } from '../../../../types/enums';
 import { useGetContactsQuery } from '../../../pages/contacts/graphql/contacts.generated';
 import { ContactListItem } from './contact-list-item';
 
@@ -50,8 +51,8 @@ export const ContactList = (props: ContactListProps) => {
 
   return (
     <List>
-      {loading && <div>{t(TEXT.general.loading)}</div>}
-      {error && <div>{t(TEXT.general.serverError)}</div>}
+      {loading && <div>{translate(TEXT.general.loading)}</div>}
+      {error && <div>{translate(TEXT.general.serverError)}</div>}
       {contacts?.length ? (
         contacts.map((contact, index) => {
           return (
@@ -64,7 +65,7 @@ export const ContactList = (props: ContactListProps) => {
           );
         })
       ) : (
-        <div>{t(TEXT.pages.contacts.labels.noContacts)}</div>
+        <div>{translate(TEXT.pages.contacts.labels.noContacts)}</div>
       )}
     </List>
   );

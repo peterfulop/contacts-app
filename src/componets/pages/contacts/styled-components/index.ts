@@ -1,6 +1,23 @@
 import styled from '../../../../theme/styled';
 import { breakPoints } from '../../../../theme/theme';
 
+export const Layout = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  width: '100%',
+  marginTop: '96px',
+  [`@media screen and (max-width: ${breakPoints.lg})`]: {
+    marginTop: '48px',
+  },
+  [`@media screen and (max-width: ${breakPoints.md})`]: {
+    marginTop: '24px',
+  },
+  [`@media screen and (max-width: ${breakPoints.sm})`]: {
+    marginTop: '0px',
+  },
+});
+
 export const Header = styled('header')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -46,7 +63,7 @@ export const HeaderContent = styled('div')({
     width: '100%',
     button: {
       display: 'block',
-      padding: '10px',
+      margin: '10px',
     },
   },
 });

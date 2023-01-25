@@ -25,9 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <Theme>
-        <Div>
-          <GenerateBrowserRouter />
-        </Div>
+        <GenerateBrowserRouter />
       </Theme>
     </BrowserRouter>
   );

@@ -4,8 +4,9 @@ import {
   ContactUpdateInput,
   Exact,
 } from '../../../../apollo/graphql-generated/types';
-import { TEXT, t } from '../../../../helpers/translate';
-import { ContactFormAction } from '../../../../types';
+import { translate } from '../../../../helpers/translate/translate';
+import { TEXT } from '../../../../helpers/translate/translate-object';
+import { ContactFormAction } from '../../../../types/enums';
 import {
   GetContactsQuery,
   useContactCreateMutation,
@@ -107,7 +108,7 @@ export const ContactForm = (props: ContactFormProps) => {
         if (validationError) setValidationError(null);
       }}
     >
-      <h2>{t(TEXT.forms.contactForms[action].title)}</h2>
+      <h2>{translate(TEXT.forms.contactForms[action].title)}</h2>
       {action === ContactFormAction.DELETE && currContact && (
         <ContactListItemData contact={currContact} style={{ margin: '1rem' }} />
       )}
@@ -122,30 +123,33 @@ export const ContactForm = (props: ContactFormProps) => {
           />
           <InputField
             type={'text'}
-            label={t(TEXT.forms.contactForms.inputFields.name.label)}
-            placeholder={t(
+            label={translate(TEXT.forms.contactForms.inputFields.name.label)}
+            placeholder={translate(
               TEXT.forms.contactForms.inputFields.name.placeholder
             )}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required={true}
           />
           <InputField
             type={'phone'}
-            label={t(TEXT.forms.contactForms.inputFields.phone.label)}
-            placeholder={t(
+            label={translate(TEXT.forms.contactForms.inputFields.phone.label)}
+            placeholder={translate(
               TEXT.forms.contactForms.inputFields.phone.placeholder
             )}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            required={true}
           />
           <InputField
             type={'email'}
-            label={t(TEXT.forms.contactForms.inputFields.email.label)}
-            placeholder={t(
+            label={translate(TEXT.forms.contactForms.inputFields.email.label)}
+            placeholder={translate(
               TEXT.forms.contactForms.inputFields.email.placeholder
             )}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required={true}
           />
         </div>
       )}
@@ -155,7 +159,7 @@ export const ContactForm = (props: ContactFormProps) => {
           type='button'
           variant='FLAT'
           theme='SECONDARY'
-          label={t(TEXT.buttons.cancel)}
+          label={translate(TEXT.buttons.cancel)}
           onClick={disableModal}
         />
         <Button
@@ -164,8 +168,8 @@ export const ContactForm = (props: ContactFormProps) => {
           theme='PRIMARY'
           label={
             action === ContactFormAction.DELETE
-              ? t(TEXT.buttons.remove)
-              : t(TEXT.buttons.done)
+              ? translate(TEXT.buttons.remove)
+              : translate(TEXT.buttons.done)
           }
         />
       </FormActions>

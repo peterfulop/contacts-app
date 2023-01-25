@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { translate } from '../../../helpers/translate/translate';
+import { TEXT } from '../../../helpers/translate/translate-object';
 import styled from '../../../theme/styled';
 import { MyRoutes } from '../../../types/enums';
 
@@ -6,9 +8,17 @@ const NotFound = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '24px',
+  justifyContent: 'center',
   textAlign: 'center',
   width: '100%',
+  height: '100vh',
+  h2: {
+    ...theme.typography.H2,
+  },
+  h3: {
+    ...theme.typography.H3,
+    marginTop: '1rem',
+  },
   a: {
     display: 'flex',
     flexDirection: 'column',
@@ -30,9 +40,11 @@ const NotFound = styled('div')(({ theme }) => ({
 export const NotFoundPage = () => {
   return (
     <NotFound>
-      <h2>Page Not Found!</h2>
-      <p>Return to the Contacts page:</p>
-      <Link to={MyRoutes.CONTACTS}>Contacts</Link>
+      <h2>{translate(TEXT.pages.notFound.labels.title)}</h2>
+      <h3>{translate(TEXT.pages.notFound.labels.content)}</h3>
+      <Link to={MyRoutes.CONTACTS}>
+        {translate(TEXT.pages.contacts.labels.title)}
+      </Link>
     </NotFound>
   );
 };
