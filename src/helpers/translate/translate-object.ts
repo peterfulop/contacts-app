@@ -1,65 +1,4 @@
-export enum Languages {
-  ENG = 'ENG',
-}
-export type Content = Record<Languages, string>;
-
-export type Text = {
-  pages: {
-    contacts: {
-      labels: {
-        title: Content;
-        noContacts: Content;
-      };
-    };
-  };
-  forms: {
-    contactForms: {
-      add: {
-        title: Content;
-      };
-      update: {
-        title: Content;
-      };
-      delete: {
-        title: Content;
-        labels: {
-          confirmDelete: Content;
-        };
-      };
-      inputFields: {
-        name: {
-          label: Content;
-          placeholder: Content;
-        };
-        phone: {
-          label: Content;
-          placeholder: Content;
-        };
-        email: {
-          label: Content;
-          placeholder: Content;
-        };
-      };
-      errors: {
-        allFieldsRequired: Content;
-      };
-    };
-  };
-  buttons: {
-    addNew: Content;
-    addPicture: Content;
-    edit: Content;
-    favourite: Content;
-    remove: Content;
-    changePicture: Content;
-    done: Content;
-    cancel: Content;
-  };
-  general: {
-    loading: Content;
-    serverError: Content;
-  };
-};
+import { Text } from './translate.schema';
 
 export const TEXT: Text = {
   pages: {
@@ -67,6 +6,12 @@ export const TEXT: Text = {
       labels: {
         title: { ENG: 'contacts' },
         noContacts: { ENG: 'there are no contacts yet...' },
+      },
+    },
+    notFound: {
+      labels: {
+        title: { ENG: 'Page Not Found!' },
+        content: { ENG: 'Return to the contacts page:' },
       },
     },
   },
@@ -119,8 +64,4 @@ export const TEXT: Text = {
     loading: { ENG: 'fetching data...' },
     serverError: { ENG: 'Server Error. Something went wrong! :( ' },
   },
-};
-
-export const t = (text: Content, lang?: Languages) => {
-  return text[lang ? lang : Languages.ENG];
 };
