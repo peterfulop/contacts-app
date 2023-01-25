@@ -15,6 +15,8 @@ import { TEXT } from '../../../../../helpers/translate/translate-object';
 import { ContactUpdateMutation } from '../../../../pages/contacts/graphql/contacts.generated';
 
 import { cloudinaryImageUploader } from '../../../../../helpers/cloud/cloudinary-image-uploader';
+import { ServerSideError } from '../../../../../helpers/translate/translate.schema';
+import { arrayToString } from '../../../../../utils/array-to-string';
 import { validateForm } from '../validations/contacts.schema';
 
 type ContactInputWithFile = Omit<Contact, 'id'> & {
@@ -25,7 +27,7 @@ type UpdateContactMutationInput = {
   id: string;
   contactInput: ContactInputWithFile;
   signatures: Signatures;
-  setValidationError: React.Dispatch<React.SetStateAction<string | null>>;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
   contactUpdateMutation: (
     options?:
       | MutationFunctionOptions<
@@ -42,16 +44,23 @@ type UpdateContactMutationInput = {
 export const updateContactMutation = async (
   input: UpdateContactMutationInput
 ) => {
-  input.setValidationError(null);
+  input.setError(null);
   const { name, email, phone, image, files } = input.contactInput;
   if (!name || !email || !phone) {
-    return input.setValidationError(
+    return input.setError(
       translate(TEXT.forms.contactForms.errors.allFieldsRequired)
     );
   }
   const { data, error } = await validateForm(input.contactInput);
   if (error) {
-    input.setValidationError(String(error));
+    const err = error[0] as ServerSideError;
+    return input.setError(
+      translate(
+        TEXT.forms.contactForms.errors.serverSideErrors[
+          err || ServerSideError.SERVER_ERROR
+        ]
+      )
+    );
   }
   if (!data) {
     return;
@@ -81,12 +90,22 @@ export const updateContactMutation = async (
       },
     });
     if (res.data?.contactUpdate.userErrors.length) {
-      return input.setValidationError(
-        res.data?.contactUpdate.userErrors[0].message
+      const error = res.data?.contactUpdate.userErrors[0]
+        .message as ServerSideError;
+      const errorValues = arrayToString(
+        res.data?.contactUpdate?.userErrors[0]?.values
+      );
+      return input.setError(
+        translate(
+          TEXT.forms.contactForms.errors.serverSideErrors[
+            error || ServerSideError.SERVER_ERROR
+          ],
+          errorValues
+        )
       );
     }
     input.disableModal();
   } catch (error: any) {
-    return input.setValidationError(String(error.message));
+    return input.setError(String(error.message));
   }
 };

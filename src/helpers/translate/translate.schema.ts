@@ -49,6 +49,8 @@ export type Text = {
       };
       errors: {
         allFieldsRequired: Content;
+        missingSignatures: Content;
+        serverSideErrors: ServerSideErrorObject;
       };
     };
   };
@@ -68,3 +70,17 @@ export type Text = {
     serverError: Content;
   };
 };
+
+export enum ServerSideError {
+  MISSING_RECORD = 'MISSING_RECORD',
+  SERVER_ERROR = 'SERVER_ERROR',
+  MISSING_INPUTS = 'MISSING_INPUTS',
+  INVALID_EMAIL_ADDRESS = 'INVALID_EMAIL_ADDRESS',
+  UNIQUE_CONSTRAINT_FAIL = 'UNIQUE_CONSTRAINT_FAIL',
+  ERROR_ON_UPDATE_IMAGE = 'ERROR_ON_UPDATE_IMAGE',
+}
+
+export type ServerSideErrorObject = Record<
+  keyof typeof ServerSideError,
+  Content
+>;

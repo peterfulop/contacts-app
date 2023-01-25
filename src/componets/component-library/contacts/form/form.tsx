@@ -50,8 +50,7 @@ export const ContactForm = (props: ContactFormProps) => {
   const [currContact, setCurrContact] = useState<ContactUpdateInput | null>(
     null
   );
-  const [validationError, setValidationError] = useState<string | null>(null);
-
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const [contactCreateMutation] = useContactCreateMutation();
@@ -72,14 +71,16 @@ export const ContactForm = (props: ContactFormProps) => {
     const contactInput = { name, email, phone, image };
     const res = await getCloudinraySignatures(client);
     if (!res) {
-      return setValidationError('Missing signatures to mutation!');
+      return setError(
+        translate(TEXT.forms.contactForms.errors.missingSignatures)
+      );
     }
     switch (action) {
       case ContactFormAction.ADD:
         await createContactMutation({
           contactInput: { ...contactInput, files: file },
           signatures: { ...res },
-          setValidationError,
+          setError,
           contactCreateMutation,
           disableModal,
         });
@@ -89,7 +90,7 @@ export const ContactForm = (props: ContactFormProps) => {
           id: currContact?.id as string,
           contactInput: { ...contactInput, files: file },
           signatures: { ...res },
-          setValidationError,
+          setError,
           contactUpdateMutation,
           disableModal,
         });
@@ -98,7 +99,7 @@ export const ContactForm = (props: ContactFormProps) => {
         await deleteContactMutation({
           id: currContact?.id as string,
           signatures: { ...res },
-          setValidationError,
+          setError,
           contactDeleteMutation,
           disableModal,
         });
@@ -106,24 +107,19 @@ export const ContactForm = (props: ContactFormProps) => {
     }
   };
 
-  const resetState = () => {
-    setFile(null);
-    setLoading(false);
-  };
-
   const handleFormSubit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
     await setAction();
+    setLoading(false);
     await props.refetch();
-    resetState();
   };
 
   return (
     <Form
       onSubmit={(e) => handleFormSubit(e)}
       onChange={() => {
-        if (validationError) setValidationError(null);
+        if (error) setError(null);
       }}
     >
       <h2>{translate(TEXT.forms.contactForms[action].title)}</h2>
@@ -177,7 +173,7 @@ export const ContactForm = (props: ContactFormProps) => {
           />
         </div>
       )}
-      {validationError && <small>{validationError}</small>}
+      {error && <small>{error}</small>}
       <FormActions>
         <Button
           type='button'

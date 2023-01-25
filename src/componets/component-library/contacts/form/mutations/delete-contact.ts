@@ -13,7 +13,7 @@ import { ContactDeleteMutation } from '../../../../pages/contacts/graphql/contac
 type DeleteContactMutationInput = {
   id: string;
   signatures: Signatures;
-  setValidationError: React.Dispatch<React.SetStateAction<string | null>>;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
   contactDeleteMutation: (
     options?:
       | MutationFunctionOptions<
@@ -30,7 +30,7 @@ type DeleteContactMutationInput = {
 export const deleteContactMutation = async (
   input: DeleteContactMutationInput
 ) => {
-  input.setValidationError(null);
+  input.setError(null);
 
   try {
     const res = await input.contactDeleteMutation({
@@ -39,12 +39,10 @@ export const deleteContactMutation = async (
       },
     });
     if (res.data?.contactDelete.userErrors.length) {
-      return input.setValidationError(
-        res.data?.contactDelete.userErrors[0].message
-      );
+      return input.setError(res.data?.contactDelete.userErrors[0].message);
     }
     input.disableModal();
   } catch (error: any) {
-    input.setValidationError(String(error.message));
+    input.setError(String(error.message));
   }
 };

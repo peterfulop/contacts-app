@@ -47,6 +47,19 @@ export const TEXT: Text = {
       },
       errors: {
         allFieldsRequired: { ENG: 'All fields are required!' },
+        missingSignatures: { ENG: 'Missing signatures to mutation!' },
+        serverSideErrors: {
+          MISSING_RECORD: {
+            ENG: 'The contact does not exist in the database!',
+          },
+          SERVER_ERROR: { ENG: 'Internal server error!' },
+          MISSING_INPUTS: { ENG: 'All fields are required!' },
+          INVALID_EMAIL_ADDRESS: { ENG: 'Email address is invalid!' },
+          UNIQUE_CONSTRAINT_FAIL: {
+            ENG: 'Value already in use:\t',
+          },
+          ERROR_ON_UPDATE_IMAGE: { ENG: 'Error on update image!' },
+        },
       },
     },
   },
