@@ -5,7 +5,7 @@ import styled from '../../../../theme/styled';
 import { breakPoints, theme } from '../../../../theme/theme';
 import { ContactFormAction } from '../../../../types';
 import { Button } from '../../button/button';
-import { Icon } from '../../icon/icon';
+import { Icon } from '../../icon-item/icon';
 import { ContactListItemData } from './contact-list-item-data';
 
 const ContactItem = styled('div')({

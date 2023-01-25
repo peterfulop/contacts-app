@@ -1,4 +1,4 @@
-import { IconType, icons } from '../icons/index';
+import { IconType, icons } from '../../../assets/icons/.index';
 
 export const Icon = (props: {
   icon: IconType;

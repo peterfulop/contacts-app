@@ -52,7 +52,7 @@ export const ContactList = (props: ContactListProps) => {
     <List>
       {loading && <div>{t(TEXT.general.loading)}</div>}
       {error && <div>{t(TEXT.general.serverError)}</div>}
-      {!loading && !error && contacts?.length ? (
+      {contacts?.length ? (
         contacts.map((contact, index) => {
           return (
             <ContactListItem
