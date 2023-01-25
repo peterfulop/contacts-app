@@ -52,6 +52,8 @@ export const ContactForm = (props: ContactFormProps) => {
   );
   const [validationError, setValidationError] = useState<string | null>(null);
 
+  const [loading, setLoading] = useState(false);
+
   const [contactCreateMutation] = useContactCreateMutation();
   const [contactUpdateMutation] = useContactUpdateMutation();
   const [contactDeleteMutation] = useContactDeleteMutation();
@@ -106,9 +108,11 @@ export const ContactForm = (props: ContactFormProps) => {
 
   const resetState = () => {
     setFile(null);
+    setLoading(false);
   };
 
   const handleFormSubit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
     await setAction();
     await props.refetch();
@@ -132,7 +136,12 @@ export const ContactForm = (props: ContactFormProps) => {
       {(action === ContactFormAction.ADD ||
         action === ContactFormAction.UPDATE) && (
         <div>
-          <ImageUploader image={image} setImage={setImage} setFile={setFile} />
+          <ImageUploader
+            image={image}
+            setImage={setImage}
+            setFile={setFile}
+            loading={loading}
+          />
           <InputField
             type={'text'}
             label={translate(TEXT.forms.contactForms.inputFields.name.label)}
@@ -142,6 +151,7 @@ export const ContactForm = (props: ContactFormProps) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required={true}
+            disabled={loading}
           />
           <InputField
             type={'phone'}
@@ -152,6 +162,7 @@ export const ContactForm = (props: ContactFormProps) => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required={true}
+            disabled={loading}
           />
           <InputField
             type={'email'}
@@ -162,6 +173,7 @@ export const ContactForm = (props: ContactFormProps) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required={true}
+            disabled={loading}
           />
         </div>
       )}
@@ -173,6 +185,7 @@ export const ContactForm = (props: ContactFormProps) => {
           theme='SECONDARY'
           label={translate(TEXT.buttons.cancel)}
           onClick={disableModal}
+          disabled={loading}
         />
         <Button
           type='submit'
@@ -183,6 +196,8 @@ export const ContactForm = (props: ContactFormProps) => {
               ? translate(TEXT.buttons.remove)
               : translate(TEXT.buttons.done)
           }
+          disabled={loading}
+          loading={loading}
         />
       </FormActions>
     </Form>

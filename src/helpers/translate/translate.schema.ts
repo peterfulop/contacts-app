@@ -63,6 +63,7 @@ export type Text = {
     cancel: Content;
   };
   general: {
+    fetchingData: Content;
     loading: Content;
     serverError: Content;
   };

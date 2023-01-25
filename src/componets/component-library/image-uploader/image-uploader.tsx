@@ -31,6 +31,7 @@ const Avatar = styled('div')(({ theme }) => ({
 
 type ImageUploaderProps = {
   image: string | null;
+  loading: boolean;
   setImage: React.Dispatch<React.SetStateAction<string | null>>;
   setFile: React.Dispatch<React.SetStateAction<FileList | null>>;
 };
@@ -47,6 +48,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
         accept='image/*'
         id='image-uploader-input'
         hidden
+        disabled={props.loading}
         onChange={({ target: { files } }) => {
           if (files) {
             props.setImage(URL.createObjectURL(files[0]));
@@ -69,6 +71,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
           theme='PRIMARY'
           label={translate(TEXT.buttons.addPicture)}
           icon='Add'
+          disabled={props.loading}
           onClick={(e) => {
             document.getElementById('image-uploader-input')?.click();
             e.preventDefault();
@@ -82,6 +85,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
             theme='PRIMARY'
             label={translate(TEXT.buttons.changePicture)}
             icon='Change'
+            disabled={props.loading}
             onClick={(e) => {
               document.getElementById('image-uploader-input')?.click();
               e.preventDefault();
@@ -92,6 +96,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
             variant='FLAT'
             theme='PRIMARY'
             icon='Delete'
+            disabled={props.loading}
             onClick={deleteImage}
           />
         </ImageModifier>

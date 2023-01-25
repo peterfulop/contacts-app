@@ -51,9 +51,9 @@ export const ContactList = (props: ContactListProps) => {
 
   return (
     <List>
-      {loading && <div>{translate(TEXT.general.loading)}</div>}
+      {loading && <div>{translate(TEXT.general.fetchingData)}</div>}
       {error && <div>{translate(TEXT.general.serverError)}</div>}
-      {contacts?.length ? (
+      {contacts &&
         contacts.map((contact, index) => {
           return (
             <ContactListItem
@@ -63,8 +63,8 @@ export const ContactList = (props: ContactListProps) => {
               setSelectedContact={props.setSelectedContact}
             />
           );
-        })
-      ) : (
+        })}
+      {!loading && !contacts?.length && (
         <div>{translate(TEXT.pages.contacts.labels.noContacts)}</div>
       )}
     </List>

@@ -92,7 +92,7 @@ export const Col = styled('div')({
   height: '96px',
   display: 'flex',
   alignItems: 'center',
-  [`@media screen and (max-width: ${breakPoints.md})`]: {
+  [`@media screen and (max-width: ${breakPoints.sm})`]: {
     display: 'none',
   },
 });

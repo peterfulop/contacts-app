@@ -1,4 +1,6 @@
 import { IconType } from '../../../assets/icons/.index';
+import { translate } from '../../../helpers/translate/translate';
+import { TEXT } from '../../../helpers/translate/translate-object';
 import styled from '../../../theme/styled';
 import { ButtonVariant, Theme } from '../../../types/enums';
 import { Icon } from '../icon-item/icon';
@@ -11,6 +13,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   reverse?: boolean;
   isActive?: boolean;
   activeColor?: string;
+  loading?: boolean;
 };
 
 const MainButton = styled('button')(({ theme }) => ({
@@ -100,7 +103,7 @@ const ButtonContent = (props: ButtonProps) => {
             margin: `${props.label ? '0 8px 0 8px' : '0'}`,
           }}
         >
-          {props.label}
+          {props.loading ? translate(TEXT.general.loading) : props.label}
         </p>
       )}
       {props.children}
@@ -112,17 +115,29 @@ export const Button = (props: ButtonProps) => {
   return (
     <>
       {props.variant === ButtonVariant.BORDERED && (
-        <ButtonBorderedPrimary onClick={props.onClick} type={props.type}>
+        <ButtonBorderedPrimary
+          onClick={props.onClick}
+          type={props.type}
+          disabled={props.disabled}
+        >
           <ButtonContent {...props} />
         </ButtonBorderedPrimary>
       )}
       {props.variant === ButtonVariant.FLAT &&
         (props.theme === Theme.SECONDARY ? (
-          <ButtonFlatSecondary onClick={props.onClick} type={props.type}>
+          <ButtonFlatSecondary
+            onClick={props.onClick}
+            type={props.type}
+            disabled={props.disabled}
+          >
             <ButtonContent {...props} />
           </ButtonFlatSecondary>
         ) : (
-          <ButtonFlatPrimary onClick={props.onClick} type={props.type}>
+          <ButtonFlatPrimary
+            onClick={props.onClick}
+            type={props.type}
+            disabled={props.disabled}
+          >
             <ButtonContent {...props} />
           </ButtonFlatPrimary>
         ))}

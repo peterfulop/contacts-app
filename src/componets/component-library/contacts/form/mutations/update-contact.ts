@@ -80,9 +80,6 @@ export const updateContactMutation = async (
         },
       },
     });
-
-    console.log(res);
-
     if (res.data?.contactUpdate.userErrors.length) {
       return input.setValidationError(
         res.data?.contactUpdate.userErrors[0].message

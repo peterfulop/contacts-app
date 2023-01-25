@@ -36,6 +36,7 @@ const MainInputField = styled('div')(({ theme }) => ({
       border: `1px solid ${theme.colors.G10}`,
       backgroundColor: theme.colors.G60,
     },
+    ':disabled': {},
   },
   small: {
     color: theme.colors.secondary,
@@ -61,6 +62,7 @@ export const InputField = (props: InputFieldProps) => {
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
+        disabled={props.disabled}
       />
       <small>{props.errorMessage}</small>
     </MainInputField>

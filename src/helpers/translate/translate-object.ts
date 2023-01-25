@@ -61,7 +61,8 @@ export const TEXT: Text = {
     changePicture: { ENG: 'change picture' },
   },
   general: {
-    loading: { ENG: 'fetching data...' },
+    loading: { ENG: 'loading...' },
+    fetchingData: { ENG: 'fetching data...' },
     serverError: { ENG: 'Server Error. Something went wrong! :( ' },
   },
 };
