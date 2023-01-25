@@ -3,8 +3,8 @@ import { ContactUpdateInput } from '../../../../apollo/graphql-generated/types';
 import { TEXT, t } from '../../../../helpers/translate';
 import styled from '../../../../theme/styled';
 import { breakPoints } from '../../../../theme/theme';
+import { ContactFormAction } from '../../../../types';
 import { useGetContactsQuery } from '../../../pages/contacts/graphql/contacts.generated';
-import { ContactFormAction } from '../form/form';
 import { ContactListItem } from './contact-list-item';
 
 const List = styled('div')({
@@ -46,12 +46,13 @@ export const ContactList = (props: ContactListProps) => {
       setContacts(typeSafeContacts);
     }
   }, [data?.getContacts.contacts]);
+  console.log(error);
 
   return (
     <List>
       {loading && <div>{t(TEXT.general.loading)}</div>}
       {error && <div>{t(TEXT.general.serverError)}</div>}
-      {contacts?.length ? (
+      {!loading && !error && contacts?.length ? (
         contacts.map((contact, index) => {
           return (
             <ContactListItem

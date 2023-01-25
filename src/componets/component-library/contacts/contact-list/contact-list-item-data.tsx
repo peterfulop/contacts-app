@@ -17,9 +17,10 @@ const ContactData = styled('div')(({ theme }) => ({
   h3: {
     ...theme.typography.H3,
   },
-  p: {
+  a: {
     ...theme.typography.P,
     color: theme.colors.secondary,
+    textDecoration: 'none',
   },
 }));
 
@@ -31,9 +32,11 @@ export const ContactListItemData = (props: ContactListItemData) => {
   return (
     <ContactData>
       <Avatar src={props.contact.image || DefaultImage} />
-      <div {...props}>
+      <div>
         <h3>{props.contact.name}</h3>
-        <p>{props.contact.phone}</p>
+        <a id={props.contact.id} href={`tel:+${props.contact.phone}`}>
+          {props.contact.phone}
+        </a>
       </div>
     </ContactData>
   );

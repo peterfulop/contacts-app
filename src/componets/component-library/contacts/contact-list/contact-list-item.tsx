@@ -3,9 +3,9 @@ import { ContactUpdateInput } from '../../../../apollo/graphql-generated/types';
 import { TEXT, t } from '../../../../helpers/translate';
 import styled from '../../../../theme/styled';
 import { breakPoints, theme } from '../../../../theme/theme';
+import { ContactFormAction } from '../../../../types';
 import { Button } from '../../button/button';
 import { Icon } from '../../icon/icon';
-import { ContactFormAction } from '../form/form';
 import { ContactListItemData } from './contact-list-item-data';
 
 const ContactItem = styled('div')({
@@ -107,6 +107,10 @@ export const ContactListItem = (props: ContactListItemProps) => {
     <ContactItem
       onMouseLeave={() => {
         setDropdownMenu(false);
+      }}
+      onClick={() => {
+        const res = document.getElementById(`${props.contact.id}`)?.click();
+        console.log(res);
       }}
     >
       <ContactListItemData contact={props.contact} />

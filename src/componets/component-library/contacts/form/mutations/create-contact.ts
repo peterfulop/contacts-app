@@ -34,7 +34,7 @@ export const createContactMutation = async (
   input.setValidationError(null);
   const { data, error } = await validateForm(input.contactInput);
   if (error) {
-    input.setValidationError(String(error));
+    input.setValidationError('Internal server ERROR');
   }
   if (!data) {
     return;
@@ -48,12 +48,11 @@ export const createContactMutation = async (
       },
     });
     if (res.data?.contactCreate.userErrors.length) {
-      return input.setValidationError(
-        res.data?.contactCreate.userErrors[0].message
-      );
+      console.log(res.data?.contactCreate.userErrors[0].message);
+      return input.setValidationError('Internal server ERROR');
     }
     input.disableModal();
   } catch (error: any) {
-    return input.setValidationError(String(error.message));
+    return input.setValidationError('Internal server ERROR');
   }
 };

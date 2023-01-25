@@ -2,12 +2,10 @@ import { useEffect, useState } from 'react';
 import { ContactUpdateInput } from '../../../apollo/graphql-generated/types';
 import Avatar from '../../../assets/avatars/Photo.png';
 import { TEXT, t } from '../../../helpers/translate';
+import { ContactFormAction } from '../../../types';
 import { Button } from '../../component-library/button/button';
 import { ContactList } from '../../component-library/contacts/contact-list/contact-list';
-import {
-  ContactForm,
-  ContactFormAction,
-} from '../../component-library/contacts/form/form';
+import { ContactForm } from '../../component-library/contacts/form/form';
 import Modal from '../../component-library/modal/modal';
 import { useGetContactsQuery } from './graphql/contacts.generated';
 import {

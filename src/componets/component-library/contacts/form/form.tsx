@@ -172,4 +172,3 @@ export const ContactForm = (props: ContactFormProps) => {
     </Form>
   );
 };
-export { ContactFormAction };
