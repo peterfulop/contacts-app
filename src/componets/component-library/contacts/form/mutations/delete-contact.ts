@@ -4,11 +4,15 @@ import {
   FetchResult,
   MutationFunctionOptions,
 } from '@apollo/client';
-import { Exact } from '../../../../../apollo/graphql-generated/types';
+import {
+  Exact,
+  Signatures,
+} from '../../../../../apollo/graphql-generated/types';
 import { ContactDeleteMutation } from '../../../../pages/contacts/graphql/contacts.generated';
 
 type DeleteContactMutationInput = {
   id: string;
+  signatures: Signatures;
   setValidationError: React.Dispatch<React.SetStateAction<string | null>>;
   contactDeleteMutation: (
     options?:
@@ -27,6 +31,7 @@ export const deleteContactMutation = async (
   input: DeleteContactMutationInput
 ) => {
   input.setValidationError(null);
+
   try {
     const res = await input.contactDeleteMutation({
       variables: {

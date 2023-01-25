@@ -1,0 +1,6 @@
+query GetSignature {
+  getSignature {
+    signature
+    timestamp
+  }
+}

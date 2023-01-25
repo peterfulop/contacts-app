@@ -1,9 +1,10 @@
-import { ApolloQueryResult } from '@apollo/client';
+import { ApolloQueryResult, useApolloClient } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import {
   ContactUpdateInput,
   Exact,
 } from '../../../../apollo/graphql-generated/types';
+import { getCloudinraySignatures } from '../../../../helpers/cloud/get-cloudinary-signatures';
 import { translate } from '../../../../helpers/translate/translate';
 import { TEXT } from '../../../../helpers/translate/translate-object';
 import { ContactFormAction } from '../../../../types/enums';
@@ -38,13 +39,14 @@ export type ContactFormProps = {
 };
 
 export const ContactForm = (props: ContactFormProps) => {
+  const client = useApolloClient();
   const { action, contact, disableModal } = props;
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-
   const [image, setImage] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [file, setFile] = useState<FileList | null>(null);
   const [currContact, setCurrContact] = useState<ContactUpdateInput | null>(
     null
   );
@@ -66,10 +68,15 @@ export const ContactForm = (props: ContactFormProps) => {
 
   const setAction = async () => {
     const contactInput = { name, email, phone, image };
+    const res = await getCloudinraySignatures(client);
+    if (!res) {
+      return setValidationError('Missing signatures to mutation!');
+    }
     switch (action) {
       case ContactFormAction.ADD:
         await createContactMutation({
-          contactInput,
+          contactInput: { ...contactInput, files: file },
+          signatures: { ...res },
           setValidationError,
           contactCreateMutation,
           disableModal,
@@ -78,7 +85,8 @@ export const ContactForm = (props: ContactFormProps) => {
       case ContactFormAction.UPDATE:
         await updateContactMutation({
           id: currContact?.id as string,
-          contactInput,
+          contactInput: { ...contactInput, files: file },
+          signatures: { ...res },
           setValidationError,
           contactUpdateMutation,
           disableModal,
@@ -87,6 +95,7 @@ export const ContactForm = (props: ContactFormProps) => {
       case ContactFormAction.DELETE:
         await deleteContactMutation({
           id: currContact?.id as string,
+          signatures: { ...res },
           setValidationError,
           contactDeleteMutation,
           disableModal,
@@ -95,10 +104,15 @@ export const ContactForm = (props: ContactFormProps) => {
     }
   };
 
+  const resetState = () => {
+    setFile(null);
+  };
+
   const handleFormSubit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await setAction();
     await props.refetch();
+    resetState();
   };
 
   return (
@@ -110,17 +124,15 @@ export const ContactForm = (props: ContactFormProps) => {
     >
       <h2>{translate(TEXT.forms.contactForms[action].title)}</h2>
       {action === ContactFormAction.DELETE && currContact && (
-        <ContactListItemData contact={currContact} style={{ margin: '1rem' }} />
+        <ContactListItemData
+          contact={currContact}
+          style={{ margin: '1rem 0' }}
+        />
       )}
       {(action === ContactFormAction.ADD ||
         action === ContactFormAction.UPDATE) && (
         <div>
-          <ImageUploader
-            image={image}
-            fileName={fileName}
-            setImage={setImage}
-            setFileName={setFileName}
-          />
+          <ImageUploader image={image} setImage={setImage} setFile={setFile} />
           <InputField
             type={'text'}
             label={translate(TEXT.forms.contactForms.inputFields.name.label)}

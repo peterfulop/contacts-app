@@ -7,6 +7,7 @@ const Avatar = styled('img')(({ theme }) => ({
   height: '40px',
   border: `1px solid ${theme.colors.G40}`,
   borderRadius: '20px',
+  objectFit: 'cover',
 }));
 
 const ContactData = styled('div')(({ theme }) => ({
@@ -30,7 +31,7 @@ type ContactListItemData = React.HTMLAttributes<HTMLDivElement> & {
 
 export const ContactListItemData = (props: ContactListItemData) => {
   return (
-    <ContactData>
+    <ContactData style={props.style}>
       <Avatar src={props.contact.image || DefaultImage} />
       <div>
         <h3>{props.contact.name}</h3>

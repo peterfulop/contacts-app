@@ -9,16 +9,12 @@ export const contactSchema = yup.object().shape({
     .required('Email is required!'),
   phone: yup
     .string()
-    // .test('type', 'only numbers!', (val) => {
-    //   return /^\d+$/.test(String(val)?.trim());
-    // })
     .required('Phone is required!')
     .typeError('Phone number must be numeric!'),
-  image: yup.string().nullable(),
 });
 
 type ValidateFormPayload = {
-  data?: ContactInput;
+  data?: Omit<ContactInput, 'image'>;
   error?: string[];
 };
 
@@ -33,7 +29,6 @@ export const validateForm = async (
           name: res.name,
           email: res.email,
           phone: res.phone,
-          image: res.image || '',
         },
       };
     } else throw new Error('Unknown Error');

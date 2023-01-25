@@ -77,11 +77,18 @@ export type Query = {
   _?: Maybe<Scalars['Boolean']>;
   getContact: ContactPayload;
   getContacts: ContactsPayload;
+  getSignature?: Maybe<Signatures>;
 };
 
 
 export type QueryGetContactArgs = {
   id: Scalars['ID'];
+};
+
+export type Signatures = {
+  __typename?: 'Signatures';
+  signature: Scalars['String'];
+  timestamp: Scalars['String'];
 };
 
 export type Subscription = {

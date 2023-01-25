@@ -31,15 +31,14 @@ const Avatar = styled('div')(({ theme }) => ({
 
 type ImageUploaderProps = {
   image: string | null;
-  fileName: string | null;
   setImage: React.Dispatch<React.SetStateAction<string | null>>;
-  setFileName: React.Dispatch<React.SetStateAction<string | null>>;
+  setFile: React.Dispatch<React.SetStateAction<FileList | null>>;
 };
 
 export const ImageUploader = (props: ImageUploaderProps) => {
   const deleteImage = () => {
     props.setImage(null);
-    props.setFileName(null);
+    props.setFile(null);
   };
   return (
     <Uploader>
@@ -50,8 +49,8 @@ export const ImageUploader = (props: ImageUploaderProps) => {
         hidden
         onChange={({ target: { files } }) => {
           if (files) {
-            files[0] && props.setFileName(files[0].name);
             props.setImage(URL.createObjectURL(files[0]));
+            props.setFile(files);
           }
         }}
       />
@@ -60,7 +59,7 @@ export const ImageUploader = (props: ImageUploaderProps) => {
           src={props.image || DefaultImage}
           width={200}
           height={200}
-          alt={props.fileName || 'default'}
+          alt={'default'}
         />
       </Avatar>
       {!props.image ? (
