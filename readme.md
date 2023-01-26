@@ -41,7 +41,7 @@ yarn migrate:dev
 yarn dev
 ```
 
-**Add some bulk contacts to the database by changing the MOCK_DATA environment variable (restart required):**
+**Add some bulk contacts to the database by changing the MOCK_DATA environment variable (CLOUDINARY_API_SECRET required!):**
 
 ```sh
 MOCK_DATA=true
