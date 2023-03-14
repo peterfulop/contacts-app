@@ -1,4 +1,4 @@
-# **UX Studio Contacts App**
+# **Contacts App**
 
 ## Start the application
 
